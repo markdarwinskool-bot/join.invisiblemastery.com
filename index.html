@@ -1,0 +1,1330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chosen Man Initiation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&family=Nunito:wght@700&family=Work+Sans:wght@300&family=Quicksand:wght@300&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600&family=Mulish:wght@500;700&display=swap">
+<style>
+/* Layout: 1:1 mirror of the reference sales page. One 886px centred column, full-width colour bands alternating per section,
+   fixed top countdown bar after the hero. Fonts, sizes, weights, line heights, widths and button shapes measured from the reference at 1280px.
+   Colours follow the same roles; the reference's own hex values are noted beside each token so you can swap them back. */
+:root {
+  /* Colour plan: warm ivory paper reads premium and calm; charcoal carries authority; deep red only ever means "act now". */
+  color-scheme: light;
+  --text: #1A1917;          /* near-black body text: maximum readability on a long letter */
+  --muted: #8F8A82;         /* small grey kickers ("Introducing", "The Investment:") */
+  --soft: #66625B;
+  --white: #FAF8F4;
+  --tint-a: #F1EDE6;        /* one neutral grey band, alternates with white */
+  --tint-b: #F1EDE6;
+  --cta: #B8142C;           /* the only accent: every button, link and highlight */
+  --cta-2: #B8142C;
+  --link: #B8142C;
+  --brand: #1A1917;         /* program name in black: confidence, no decoration */
+  --dark: #151413;          /* charcoal: top bar, opt-in, the "why you're stuck" turn */
+  --dark-text: #F2F2F2;
+  --dark-muted: #A3A6AC;
+  --name: #1A1917;
+  --hl: #F5E1E1;            /* faint red highlight behind key cue lines */
+  --hl-yellow: #F5E1E1;
+  --optin-card: #FAF8F4;
+  --optin-btn: #B8142C;
+  --line: #E4DED4;
+  --rule: #CDC6BA;
+  --f-body: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Nunito", "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-work: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-quick: "Quicksand", "Nunito Sans", Arial, sans-serif;
+  --f-btn: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --f-mont: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-mul: "Mulish", "Nunito Sans", Arial, sans-serif;
+  --col: 886px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { background: var(--white); }
+body { margin: 0; color: var(--text); font: 300 20px/26px var(--f-body); -webkit-font-smoothing: antialiased; }
+p { margin: 0; }
+b, strong { font-weight: 700; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cta); outline-offset: 3px; }
+
+/* ---------- section scaffolding (reference .block__style) ---------- */
+.blk { padding: 40px 16px; }
+.blk.tint-a { background: var(--tint-a); }
+.blk.tint-b { background: var(--tint-b); }
+.blk.white { background: var(--white); }
+.blk.dark { background: var(--dark); color: var(--dark-text); }
+.blk.dark .accent-line { color: #F0566A; }
+.col { max-width: var(--col); margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
+.t30 { font: 700 30px/32px var(--f-body); text-align: center; text-wrap: balance; }
+.t25 { font: 700 25px/28px var(--f-body); }
+.t26 { font: 700 26px/30px var(--f-body); text-align: center; }
+.t22 { font: 300 22px/25px var(--f-body); text-align: center; }
+.small { font: 300 16px/22px var(--f-body); }
+.it { font-style: italic; }
+.hl-pink { background: var(--hl); }
+hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 20px 0; width: 100%; }
+ul.list { margin: 0; padding-left: 40px; display: flex; flex-direction: column; gap: 18px; }
+
+/* ---------- media placeholders ---------- */
+.ph { background: #E4DFD5; color: #6E6A63; display: grid; place-items: center; text-align: center; font: 600 15px/1.4 var(--f-body); padding: 12px; max-width: 100%; }
+.ph.video { width: 100%; aspect-ratio: 886 / 498; background: #121110; color: #9AA0A6; position: relative; }
+.ph.video::before { content: ""; position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.ph.video::after { content: ""; position: absolute; left: 50%; top: 50%; margin: -13px 0 0 -7px; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
+.ph.video span { position: absolute; left: 12px; bottom: 10px; font-size: 13px; text-align: left; }
+
+/* ---------- buttons ---------- */
+.btn-join { align-self: center; display: inline-flex; align-items: center; justify-content: center; width: 233px; max-width: 100%; height: 62px; border-radius: 100px; background: var(--cta); color: #fff; text-decoration: none; font: 700 22px/22px var(--f-btn); box-shadow: 0 2px 5px rgba(0,0,0,.16), 0 2px 10px rgba(0,0,0,.12); transition: filter .15s; }
+.btn-join:hover { filter: brightness(1.1); }
+.pill { align-self: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 302px; max-width: 100%; min-height: 84px; padding: 0 28px; border-radius: 100px; background: var(--cta-2); color: #fff; text-decoration: none; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,.16), 0 2px 10px rgba(0,0,0,.12); transition: filter .15s; }
+.pill:hover { filter: brightness(1.08); }
+.pill b { font: 700 22px/22px var(--f-btn); }
+.pill span { font: 300 16px/22px var(--f-btn); }
+.pill.wide { width: 327px; }
+
+/* ---------- block 0: inline timer ---------- */
+.timer-blk { padding: 14px 16px 10px; background: var(--white); }
+.timer-blk .lbl { font: italic 300 16px/22px var(--f-body); text-align: center; }
+.units { max-width: var(--col); margin: 6px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+.units b { display: block; font: 300 36px/32px var(--f-work); font-variant-numeric: tabular-nums; }
+.units span { display: block; margin-top: 6px; font: 500 14px/14px var(--f-btn); text-transform: uppercase; }
+
+/* ---------- fixed top bar (appears after hero) ---------- */
+.topbar { position: fixed; left: 0; right: 0; top: 0; z-index: 30; height: calc(70px + env(safe-area-inset-top, 0px)); padding: env(safe-area-inset-top, 0px) 16px 0; background: var(--dark); color: #fff; display: flex; align-items: center; justify-content: center; gap: 14px; transform: translateY(-110%); transition: transform .12s ease-out; }
+.topbar.is-visible { transform: none; }
+.topbar .full { font: 800 19px/26px var(--f-body); }
+.topbar .cd { display: flex; gap: 6px; }
+.topbar .u { width: 52px; height: 42px; border-radius: 10px; background: rgba(255,255,255,.14); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.topbar .u b { font: 800 26px/26px var(--f-body); font-variant-numeric: tabular-nums; }
+.topbar .u span { font: 400 9px/10px var(--f-body); letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+.topbar a { margin-left: 8px; background: var(--cta); color: #fff; border-radius: 999px; padding: 0 22px; height: 26px; display: inline-flex; align-items: center; text-decoration: none; font: 800 18px/26px var(--f-body); white-space: nowrap; }
+.topbar .row { display: flex; align-items: center; gap: 14px; }
+.topbar .sh { display: none; }
+
+/* ---------- block 1: hero ---------- */
+.hero { padding: 20px 16px 40px; background: var(--white); }
+.hero h1 { margin: 0; font: 700 37px/37px var(--f-head); text-align: center; text-wrap: balance; }
+.hero .sub { font: 300 24px/27px var(--f-work); text-align: center; }
+.cta-notes { display: flex; flex-direction: column; text-align: center; font: italic 300 16px/22px var(--f-body); }
+
+/* ---------- video blocks ---------- */
+.vid { padding: 20px 16px; background: var(--white); }
+.vid .playline { align-self: stretch; text-align: center; font: 300 26px/30px var(--f-work); }
+.vid .playline span { padding: 0 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.vid .cap { font: 300 16px/22px var(--f-body); text-align: center; }
+
+/* ---------- block 3: maybe you're ---------- */
+.logo-ph { align-self: center; width: 295px; height: 92px; }
+.maybe .q { font: 700 25px/28px var(--f-body); }
+.maybe .a { font: 300 25px/28px var(--f-body); margin-top: -8px; }
+
+/* ---------- block 7: introducing ---------- */
+.intro-top { display: flex; flex-direction: column; align-items: center; }
+.intro-top .pre { font: 300 24px/40px var(--f-body); color: var(--muted); }
+.intro-top .name { font: 700 36px/44px var(--f-body); color: var(--brand); text-align: center; }
+.gif-ph { align-self: center; width: 590px; aspect-ratio: 590 / 327; }
+
+/* ---------- join CTA blocks ---------- */
+.join { padding: 70px 16px; background: var(--white); }
+.join h2 { margin: 0; font: 700 42px/42px var(--f-head); text-align: center; }
+.join.last { padding: 0 16px 40px; }
+
+/* ---------- block 11: investment ---------- */
+.invest-h { font: 300 32px/40px var(--f-body); color: var(--muted); text-align: center; }
+
+/* ---------- block 13: screenshot wall ---------- */
+.wall-h { font: 300 24px/26px var(--f-body); color: var(--muted); text-align: center; text-wrap: balance; }
+.wall { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.wall .ph { min-height: 230px; border: 6px solid var(--white); }
+@media (max-width: 600px) { .wall { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- block 14: price pills ---------- */
+.join-top { display: flex; flex-direction: column; align-items: center; }
+.join-top .pre { font: 700 24px/40px var(--f-body); color: var(--muted); }
+.join-top .name { font: 700 36px/44px var(--f-body); color: var(--brand); text-align: center; }
+.or { font: 700 20px/26px var(--f-body); text-align: center; }
+
+/* ---------- testimonials ---------- */
+.tm { max-width: var(--col); margin: 0 auto; padding-left: 8px; display: grid; grid-template-columns: 195px minmax(0, 624px); column-gap: 38px; justify-content: start; align-items: start; }
+/* photo */ .tm .photo { grid-row: 1 / span 2; width: 195px; height: 195px; border: 6px solid var(--white); border-radius: 5px; box-shadow: 0 3px 18px rgba(0,0,0,.12), 0 3px 5px rgba(0,0,0,.08); background: #E4DFD5; display: grid; place-items: center; text-align: center; font: 600 14px/1.3 var(--f-body); color: #6E6A63; margin-top: 8px; }
+.tm h3 { margin: 0 0 22px; font: 700 30px/32px var(--f-body); text-align: center; text-wrap: balance; }
+.tm .body { display: flex; flex-direction: column; gap: 14px; font: 300 20px/31px var(--f-body); }
+.tm .body .ph-line { background: rgba(0,0,0,.06); color: #5E646B; font-size: 16px; padding: 4px 10px; }
+.tm .more { font: 600 16px/18px var(--f-body); color: var(--link); text-decoration: none; padding-left: 10px; }
+.tm .who { display: flex; flex-direction: column; margin-top: 4px; }
+.tm .who .n { font: 700 20px/27px var(--f-body); color: var(--name); }
+.tm .who .l { font: 300 20px/27px var(--f-body); }
+.tm .who .br { font: 300 17px/23.8px var(--f-body); color: var(--soft); }
+@media (max-width: 760px) { .tm { padding-left: 0; grid-template-columns: minmax(0, 1fr); row-gap: 18px; justify-items: center; } /* photo */ .tm .photo { grid-row: auto; } .tm .body { justify-self: stretch; } }
+
+/* ---------- Q&A ---------- */
+.qa-h { font: 300 36px/40px var(--f-body); text-align: center; }
+.faq { width: 100%; max-width: 820px; align-self: center; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; padding: 22px 40px 22px 4px; position: relative; font: 700 25px/31.25px var(--f-body); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; position: absolute; right: 12px; top: 50%; width: 10px; height: 10px; margin-top: -8px; border-right: 2px solid var(--link); border-bottom: 2px solid var(--link); transform: rotate(45deg); transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+.faq .a { padding: 2px 4px 26px 30px; display: flex; flex-direction: column; gap: 20px; font: 300 20px/30px var(--f-body); }
+.faq .a .ph.video { max-width: 786px; }
+.more-q { text-align: center; font: 400 16px/22px var(--f-body); }
+.more-q a { text-decoration: none; }
+
+/* ---------- client video grid ---------- */
+.cs-h { font: 300 30px/32px var(--f-work); text-align: center; }
+.cs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 10px; }
+.cs figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.cs figcaption { font: 300 25px/32px var(--f-quick); text-align: center; }
+@media (max-width: 600px) { .cs { grid-template-columns: minmax(0, 1fr); } }
+
+.replays { list-style: none; margin: 0; padding: 0; text-align: center; font: 300 16px/26px var(--f-body); }
+footer { background: var(--white); padding: 10px 16px 90px; text-align: center; font: 300 14px/20px var(--f-body); color: var(--soft); }
+
+/* ---------- OPT-IN (reference: full-bleed photo, 747px card, 50px padding, Roboto) ---------- */
+.optin { min-height: 100vh; padding: 42px 16px 90px; display: flex; justify-content: center; align-items: flex-start; background: linear-gradient(rgba(21,20,19,.55), rgba(21,20,19,.55)), #2B2925; position: relative; }
+.optin .bg-note { position: absolute; right: 16px; bottom: 70px; color: rgba(255,255,255,.7); font: 600 13px/1.3 var(--f-body); }
+.card { width: 747px; max-width: 100%; background: var(--optin-card); padding: 50px; display: flex; flex-direction: column; font-family: var(--f-btn); }
+
+.card h1 { margin: 0 0 33px; font: 700 30px/30px var(--f-btn); }
+.card .lead { font: 700 18px/26px var(--f-btn); margin-bottom: 20px; }
+.card .p { font: 300 18px/26px var(--f-btn); margin-bottom: 26px; }
+.card .cue { align-self: flex-start; font: 700 18px/26px var(--f-btn); background: var(--hl-yellow); margin-bottom: 22px; }
+.card input { display: block; width: 100%; height: 44px; margin-top: 5px; border: 1px solid #DADADA; border-radius: 0; background: #fff; padding: 8px 0 8px 10px; font: 400 18px/26px var(--f-btn); color: #000; }
+.card input::placeholder { color: #000; opacity: 1; }
+.card input:focus { outline: none; border-color: var(--text); }
+.card .err { margin-top: 10px; font: 400 15px/20px var(--f-btn); color: #B3261E; }
+.card button { margin-top: 20px; height: 50px; border: 0; border-radius: 0; background: var(--optin-btn); color: #fff; font: 700 20px/20px var(--f-btn); cursor: pointer; }
+.card button:hover { filter: brightness(1.1); }
+
+/* ---------- shared bits for the extra pages ---------- */
+.view-page { background: var(--white); padding: 40px 16px 110px; min-height: 100vh; }
+.view-page.grey { background: var(--tint-a); }
+.btn-solid { align-self: center; display: inline-flex; align-items: center; justify-content: center; text-align: center; border: 0; cursor: pointer; background: var(--cta); color: #fff; text-decoration: none; border-radius: 100px; box-shadow: 0 2px 5px rgba(0,0,0,.16), 0 2px 10px rgba(0,0,0,.12); transition: filter .15s; }
+.btn-solid:hover { filter: brightness(1.1); }
+.units.muted b, .units.muted span { color: var(--muted); }
+
+/* ---------- CHECKOUT (reference: hmm-pp6 / hmm-pif) ---------- */
+.co { background: var(--tint-a); padding: 70px 16px 110px; min-height: 100vh; }
+.co-head { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.co-head .a { font: 500 35px/1.2 var(--f-body); color: var(--muted); }
+.co-head .b { font: 700 35px/1.2 var(--f-body); color: var(--brand); }
+.co-head .c { font: 500 24px/29px var(--f-mont); color: var(--muted); }
+.co-kick { font: 500 17px/21px var(--f-mul); color: var(--soft); }
+.co-imgs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.co-imgs .ph { min-height: 170px; }
+.co-grid { display: grid; grid-template-columns: minmax(0, 443px) minmax(0, 370px); justify-content: space-between; column-gap: 40px; row-gap: 30px; align-items: stretch; }
+.co-left { display: flex; flex-direction: column; gap: 20px; }
+.co-h { font: 600 24px/29px var(--f-mont); color: var(--muted); }
+.co-row { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 11px; }
+.co input { display: block; width: 100%; height: 56px; border: 1px solid transparent; border-radius: 0; background: #fff; padding: 0 12px; font: 600 13px/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #000; }
+.co input::placeholder { color: #000; opacity: 1; }
+.co input:focus { outline: none; border-color: var(--text); }
+.co hr { border: 0; border-top: 1px solid var(--rule); margin: 6px 0; width: 100%; }
+.card-ph { background: #fff; display: flex; flex-direction: column; gap: 10px; padding: 22px 20px; }
+.card-ph .pay-h { font: 600 17px/1.3 var(--f-mont); color: var(--text); }
+.card-ph .pay-t { font: 500 15px/1.5 var(--f-mul); color: var(--soft); }
+.card-ph .pay-cards { font: 600 12px/1.4 var(--f-mont); color: var(--muted); letter-spacing: .02em; }
+.card-ph .f { height: 48px; border: 1px solid #E3E3E3; display: flex; align-items: center; padding: 0 12px; font: 600 13px/1 system-ui, -apple-system, sans-serif; color: #8A8D93; }
+.card-ph .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card-ph .note { margin-top: auto; font: 500 12px/1.4 var(--f-mont); color: var(--muted); text-align: center; }
+.summary { background: #fff; padding: 40px; box-shadow: 0 2px 14px rgba(0,0,0,.10); display: flex; flex-direction: column; gap: 26px; }
+.sum-row { display: flex; justify-content: flex-end; align-items: center; gap: 35px; font: 600 13px/16px system-ui, -apple-system, sans-serif; color: #616161; padding: 21px 0; border-bottom: 1px solid #EEE; }
+.sum-note { font: 500 12px/15px var(--f-mont); color: var(--muted); }
+.co-terms { text-align: center; font: 600 13px/16px system-ui, -apple-system, sans-serif; }
+.co-terms a { color: #424242; }
+.co-btn { width: 222px; height: 57px; font: 600 17px/17px var(--f-mont); }
+.co-inc { font: 500 17px/21px var(--f-mul); color: var(--soft); display: flex; flex-direction: column; gap: 10px; }
+.co-inc ul { margin: 0; padding-left: 40px; display: flex; flex-direction: column; gap: 7px; }
+.co-inc a { color: var(--link); }
+.co-proof { font: 700 17px/21px var(--f-mul); color: var(--soft); }
+.co .err { font: 600 14px/18px system-ui, sans-serif; color: var(--cta); text-align: center; }
+@media (max-width: 900px) { .co-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .co-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 9px; } .co-imgs { grid-template-columns: minmax(0, 1fr); } .summary { padding: 20px; } }
+
+/* ---------- REPLAY WATCH PAGE (reference: mm7-replay-video) ---------- */
+.rp .lbl { font: 300 16px/22px var(--f-body); text-align: center; }
+.rp-title { font: 300 36px/1.1 var(--f-work); text-align: center; }
+.rp-date { font: 300 26px/1 var(--f-work); text-align: center; margin-top: -16px; }
+.rp-sub { font: 300 26px/31px var(--f-work); color: var(--muted); text-align: center; text-wrap: balance; }
+.rp .ph.video { width: 846px; max-width: 100%; align-self: center; }
+.rp-desc { display: flex; flex-direction: column; gap: 20px; }
+.chapters { margin: 0; padding-left: 40px; font: 300 20px/26px var(--f-body); }
+.chapters time { font-variant-numeric: tabular-nums; }
+.rp-btn { width: 222px; min-height: 102px; padding: 16px; flex-direction: column; gap: 12px; border-radius: 22px; font: 700 16px/1.2 var(--f-btn); }
+.rp-btn2 { width: 290px; min-height: 80px; padding: 14px 20px; flex-direction: column; gap: 6px; border-radius: 22px; font: 700 16px/1.3 var(--f-btn); }
+.rp-more { text-align: center; font: 300 16px/19px var(--f-btn); color: #616161; }
+
+/* ---------- WAITLIST ---------- */
+.wl-hero h1 { margin: 0; font: 700 37px/1.18 var(--f-head); text-align: center; text-wrap: balance; }
+.wl-hero .sub { font: 300 24px/27px var(--f-work); text-align: center; }
+.wl-card { align-self: center; width: 747px; max-width: 100%; }
+.wl-card.card { box-shadow: 0 2px 14px rgba(0,0,0,.08); }
+.wl-done { text-align: center; display: flex; flex-direction: column; gap: 14px; }
+.wl-done b { font: 700 30px/1.2 var(--f-btn); }
+
+/* ---------- THANK YOU ---------- */
+.ty h1 { margin: 0; font: 700 42px/1.1 var(--f-head); text-align: center; }
+.ty .sub { font: 300 24px/27px var(--f-work); text-align: center; text-wrap: balance; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; counter-reset: st; }
+.steps li { counter-increment: st; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(st); width: 40px; height: 40px; border-radius: 50%; background: var(--dark); color: #fff; display: grid; place-items: center; font: 800 20px/1 var(--f-body); }
+.steps .t { font: 700 22px/28px var(--f-body); }
+.steps .d { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.steps .go { font: 700 16px/1 var(--f-btn); padding: 14px 22px; }
+.tag-pif { display: inline-block; margin-left: 8px; padding: 3px 8px; border-radius: 4px; background: var(--hl); color: var(--cta); font: 700 12px/1.3 var(--f-btn); vertical-align: middle; }
+
+/* ---------- FAQ VIDEO LIBRARY ---------- */
+.faqlib h1 { margin: 0; font: 300 36px/1.15 var(--f-work); text-align: center; }
+.faqlib .sub { font: 300 22px/26px var(--f-body); color: var(--muted); text-align: center; }
+.fl-group { display: flex; flex-direction: column; gap: 18px; }
+.fl-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
+.fl-grid figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.fl-grid figcaption { font: 700 19px/24px var(--f-body); }
+@media (max-width: 600px) { .fl-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- EMAIL / SMS SEQUENCE ---------- */
+.mails h1 { margin: 0; font: 700 37px/1.18 var(--f-head); text-align: center; }
+.mails .sub { font: 300 20px/27px var(--f-body); text-align: center; color: var(--soft); }
+.mail-group { display: flex; flex-direction: column; gap: 14px; }
+.mail-group > h2 { margin: 14px 0 0; font: 700 25px/30px var(--f-body); }
+.mail-group > p { font: 300 18px/25px var(--f-body); color: var(--soft); }
+.mail { background: #fff; border: 1px solid var(--line); padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+.mail .meta { font: 700 12px/1.3 var(--f-btn); text-transform: uppercase; letter-spacing: .07em; color: var(--cta); }
+.mail .subj { font: 700 20px/26px var(--f-body); }
+.mail .prev { font: italic 300 16px/22px var(--f-body); color: var(--soft); }
+.mail pre { margin: 6px 0 0; white-space: pre-wrap; word-wrap: break-word; font: 300 17px/25px var(--f-body); color: var(--text); }
+.mail .sms { margin-top: 6px; background: var(--tint-a); padding: 12px 14px; font: 400 16px/22px var(--f-btn); }
+.mail .sms b { display: block; font: 700 11px/1.3 var(--f-btn); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.mail .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.copy { font: 600 13px/1 var(--f-btn); padding: 9px 12px; border: 1px solid var(--line); background: var(--white); color: var(--text); border-radius: 4px; cursor: pointer; }
+.copy:hover { border-color: var(--text); }
+
+/* ---------- Reels-style snap scrolling: each section clicks into place at the top of the screen ---------- */
+html { scroll-snap-type: y mandatory; scroll-padding-top: 70px; }
+#sales > section, #sales > .timer-blk, #sales > footer { scroll-snap-align: start; }
+#sales > .timer-blk:not([hidden]) + .hero { scroll-snap-align: none; }   /* timer + headline snap together as one screen */
+
+/* ---------- draft-only preview switcher ---------- */
+.preview { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px)); background: #111; color: #bbb; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; justify-content: center; font: 600 12px/1 var(--f-body); }
+html.live .preview { display: none; }
+.preview button { font: inherit; color: #eee; background: transparent; border: 1px solid #444; border-radius: 4px; padding: 6px 9px; cursor: pointer; }
+.preview button[aria-pressed="true"] { background: #eee; color: #111; }
+
+@media (max-width: 600px) {
+  /* Reference keeps the desktop type sizes on phones. Only spacing, the Q&A and the top bar change. */
+  html { scroll-padding-top: 97px; }
+  .blk, .vid { padding: 20px; }
+  .hero { padding: 0 20px 20px; }
+  .timer-blk { padding: 10px 20px 8px; }
+  .units { padding: 0 13px; }
+  .join { padding: 70px 20px; }
+  .join.last { padding: 0 20px 20px; }
+  .view-page, .co { padding-left: 20px; padding-right: 20px; }
+  .optin { padding: 0 20px 90px; }
+  .logo-ph { width: 100%; height: auto; aspect-ratio: 295 / 92; }
+  .tm .photo { width: calc(100% - 26px); height: auto; aspect-ratio: 1 / 1; justify-self: start; margin-left: 8px; }
+  .tm .body { padding: 0 20px; }
+  .faq { width: calc(100% - 40px); }
+  .faq summary { font-size: 21px; line-height: 26.25px; }
+  .faq .a { padding-left: 20px; font-size: 18px; line-height: 27px; }
+  .topbar { height: calc(97px + env(safe-area-inset-top, 0px)); flex-direction: column; justify-content: flex-start; gap: 8px; padding-top: calc(env(safe-area-inset-top, 0px) + 13px); }
+  .topbar .row { gap: 9px; }
+  .topbar .full { font-size: 20px; }
+  .topbar .lg { display: none; }
+  .topbar .sh { display: inline; }
+  .topbar .u { width: 43px; height: 36px; border-radius: 8px; }
+  .topbar .u b { font-size: 22px; line-height: 22px; }
+  .topbar .u span { font-size: 7px; line-height: 9px; }
+  .topbar a { margin-left: 0; font-size: 16px; padding: 0 26px; height: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<meta name="description" content="The Chosen Man Initiation: a six-month program for men who keep relapsing into the same habits. Break the loop, drop the mask and become the man who keeps his word.">
+<meta property="og:title" content="Chosen Man Initiation">
+<meta property="og:description" content="Stop relapsing into the same old habits and become the man who keeps his word.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://join.invisiblemastery.com/">
+<script>window.__LIVE__ = true;</script>
+</head>
+<body>
+
+<!-- =====================================================================
+  CHOSEN MAN FUNNEL (draft). Layout mirrors the reference 1:1.
+  Page 1 = #optin (replay request). Page 2 = #sales (enrollment page).
+  Bracketed [TEXT] = fill in. Grey/black boxes = media to drop in.
+  Dates, prices and links live in CONFIG at the bottom.
+====================================================================== -->
+
+<!-- =========================== PAGE 1: OPT-IN =========================== -->
+<main id="optin" class="view optin">
+  <span class="bg-note">[Full-screen background photo]</span>
+  <form class="card" id="optin-form" novalidate>
+    <h1>"Man to Man" LIVE <span data-cfg="eventNumber">#1</span> (REPLAY)</h1>
+    <p class="lead">Honestly, this call was SO powerful. 🔥 If you missed it live you HAVE to watch the replay.</p>
+    <p class="p">On this call, men I've worked with share their stories one-by-one, from relapsing for years and hiding behind a mask to now keeping their word, showing up every day and leading their lives.</p>
+    <p class="p">Their stories will blow your mind with what's possible. 💪</p>
+    <span class="cue">👇 Fill out the form below to watch the replay</span>
+    <input id="f-first" name="firstname" placeholder="First Name" aria-label="First Name" autocomplete="given-name">
+    <input id="f-last" name="lastname" placeholder="Last Name" aria-label="Last Name" autocomplete="family-name">
+    <input id="f-email" name="email" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
+    <input id="f-phone" name="sms_number" type="tel" placeholder="Phone (for Texting)" aria-label="Phone (for Texting)" autocomplete="tel">
+    <p class="err" id="f-err" hidden>Add your first name and a valid email to get the replay.</p>
+    <button type="submit">Get the Replay</button>
+  </form>
+</main>
+
+<!-- =========================== PAGE 2: SALES =========================== -->
+<main id="sales" class="view" hidden>
+
+  <div class="topbar" id="topbar" aria-hidden="true">
+    <div class="row">
+      <span class="full"><span class="if-open"><span class="lg">Enrollment closes in</span><span class="sh">Doors close</span></span><span class="if-waitlist"><span class="lg">Enrollment opens in</span><span class="sh">Opens in</span></span><span class="if-closed">Enrollment is closed</span></span>
+      <div class="cd if-open if-waitlist">
+        <div class="u"><b data-cd="d">00</b><span>Days</span></div>
+        <div class="u"><b data-cd="h">00</b><span>Hrs</span></div>
+        <div class="u"><b data-cd="m">00</b><span>Min</span></div>
+        <div class="u"><b data-cd="s">00</b><span>Sec</span></div>
+      </div>
+    </div>
+    <a href="#join" class="if-open" tabindex="-1">Join Chosen Man</a>
+    <a href="#waitlist" class="if-waitlist if-closed" tabindex="-1">Join the Waitlist</a>
+  </div>
+
+  <!-- 0 · inline timer -->
+  <div class="timer-blk if-open if-waitlist">
+    <p class="lbl"><span class="if-open">Enrollment Ends in:</span><span class="if-waitlist">Enrollment Opens in:</span></p>
+    <div class="units">
+      <div><b data-cd="d">0</b><span>Days</span></div>
+      <div><b data-cd="h">00</b><span>Hours</span></div>
+      <div><b data-cd="m">00</b><span>Minutes</span></div>
+      <div><b data-cd="s">00</b><span>Seconds</span></div>
+    </div>
+  </div>
+
+  <!-- 1 · hero (above the fold: same lines and character counts as the reference) -->
+  <section class="hero" id="hero">
+    <div class="col">
+      <h1>Stop Relapsing Into the Same Old Habits and Become the Man Who Keeps His Word</h1>
+      <p class="sub">“Chosen Man” is a groundbreaking program designed to help you break the loop and rebuild your identity from the root so you see changes very quickly - within 3 months.</p>
+      <p class="sub">2027 will be the year where everything changes, and you become the man you keep promising to be.</p>
+      <a class="btn-join if-open" href="#join">Join Today</a>
+      <a class="btn-join if-waitlist if-closed" href="#waitlist">Join the Waitlist</a>
+      <div class="cta-notes">
+        <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
+        <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span> to the Waitlist.</span>
+        <span class="if-closed">Enrollment is closed. Join the waitlist for the next intake.</span>
+        <span>Limited spots available</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · replay video -->
+  <section class="vid">
+    <div class="col">
+      <p class="playline"><span class="hl-pink">Click play on video below 👇</span></p>
+      <div class="ph video"><span>[Replay] "Man to Man" LIVE #1</span></div>
+      <p class="cap">This video is the REPLAY from the last <b>"Man to Man"</b> call - an intimate virtual gathering to meet men I've worked with. Hear their stories and what changed for them. <b>Press play to hear my own story (at [1h__m]) and how I found this work.</b> (To watch the Q&amp;A from this call. <a href="#replay">Go Here</a>)</p>
+    </div>
+  </section>
+
+  <!-- 3 · do you / or maybe -->
+  <section class="blk tint-a maybe">
+    <div class="col">
+      <div class="ph logo-ph">[Logo] Chosen Man · The Initiation</div>
+      <p class="q">Do you keep relapsing into habits you swore you'd quit, for so long now?</p>
+      <p class="a">Whether it’s p*rn or your phone, this doesn’t mean you lack discipline, but it requires a new approach.</p>
+      <p class="q">Or maybe you know exactly what to do, you've saved every video and written every plan, but you're still unable to make yourself actually do it?</p>
+      <p class="a">This doesn’t mean you’re lazy or stuck like this forever, it just means the part of you that's driving isn’t ready to change yet.</p>
+      <p class="q">Or maybe you're performing a version of yourself at work, with your girl and with your friends, but nobody knows the real state of you, and you can't remember who's behind the mask anymore?</p>
+      <p class="a">This doesn’t mean you don’t know who you are or that you’re the failure you might feel like, it just means the mask stuck.</p>
+    </div>
+  </section>
+
+  <!-- 4 · you've tried it all -->
+  <section class="blk white">
+    <div class="col">
+      <p>You might have tried it all: 5am alarms, cold showers, the gym, a dopamine detox. Or maybe just some of it, for a week. But nothing sticks.</p>
+      <p>You take one step forward and three steps back. Every fresh start fades within days, leaving you feeling stuck and ashamed.</p>
+      <p>As the years go by, you might see yourself falling further and further behind other men, and hope begins to slip away.</p>
+      <p>Every time you break a promise to yourself or slip back into the same habit, your mind spirals, taking it as evidence that something is wrong with you and that you'll never change.</p>
+      <p>You want to believe this time will be different, but past disappointments hold you back.</p>
+      <p>You’re caught in a cycle of forcing and giving up, managing expectations to avoid the pain of hoping, only to be let down again.</p>
+      <p><b>Sound familiar? You’re in the right place.</b></p>
+    </div>
+  </section>
+
+  <!-- 5 · core belief (the turn: dark pattern interrupt) -->
+  <section class="blk dark">
+    <div class="col">
+      <p class="t30">Why you keep falling back into it<br>(Or why nothing ever sticks)</p>
+      <p>Your lack of change isn’t because you <i>can’t</i> do it, it’s because your identity and your beliefs are protecting something else.</p>
+      <p>Holding back is actually your mind’s way of being super <i>intelligent</i>. It’s keeping you safe.</p>
+      <p><b>Here’s what no one tells you…</b></p>
+      <p>When your identity is built on old beliefs, fear or shame, it prioritises staying safe over growth, discipline and lasting change.</p>
+      <p>It’s not that you don’t <i>want</i> to change; your mind simply can’t commit to it while it’s busy defending the old version of you.</p>
+      <p>Discipline and information alone don’t address the root cause. You’re trying to teach skills to a man who doesn’t believe he’s allowed them.</p>
+      <p><b>Think of it like bad foundations.</b></p>
+      <p>When the foundations are cracked, decorating the house is pointless. Every few months the walls come down and you blame the paint.</p>
+      <p>When your identity is in protection mode, the mind puts growth, like discipline and drive, on the back burner.</p>
+      <p>This is why routines and willpower haven’t worked. The man underneath is too guarded to change from these efforts.</p>
+      <p class="accent-line"><b>The good news is, when you know how to move your identity from protection mode to safe and settled, everything changes</b></p>
+      <p>Old loops lose their grip. Discipline returns. Change happens naturally.</p>
+      <p>🔥 Men who relapsed every week stop relying on willpower.<br>🔥 Men stuck between knowing and doing start doing it by default.<br>🔥 Men hiding behind a mask finally start being seen.</p>
+      <p>This is why my clients see results within weeks. Because when you address the root cause and take action in the right order, change becomes natural and inevitable.</p>
+      <p>I’ll show you exactly what to do to get your mind to prioritise growth again. So that you can keep your word, build real confidence and become the man you know you can be.</p>
+      <p><b>This work is absolutely life changing. And it can happen quickly.</b></p>
+    </div>
+  </section>
+
+  <!-- 6 · protocol clip -->
+  <section class="vid">
+    <div class="col">
+      <p class="t26">What is your protocol?<br>What do you do exactly?</p>
+      <p class="t22">Watch this quick clip 👇</p>
+      <div class="ph video"><span>[Clip] The cracked-foundation process, 2–3 min</span></div>
+    </div>
+  </section>
+
+  <!-- 7 · introducing -->
+  <section class="blk white" style="padding-top:0">
+    <div class="col">
+      <div class="intro-top"><span class="pre">Introducing</span><span class="name">Chosen Man</span></div>
+      <p>Chosen Man is my groundbreaking program for men who feel stuck, that focuses on identity and discipline.</p>
+      <p>It is designed to help you break your loops, drop the masks, keep your word to yourself, have real conversations and experience an explosion of confidence and drive, all while rebuilding your identity from the root up.</p>
+      <p>You will see changes within weeks if you go all in with my process.</p>
+      <p>This program is broken down into two powerful phases.</p>
+      <p>Phase one is a three month LIVE.</p>
+      <p>In the first three months, we dive deep. This is designed to give you everything you need to fully understand and implement what works for you.</p>
+      <hr class="rule">
+      <p class="t25">We’ll focus on:</p>
+      <ul class="list">
+        <li>Identifying and addressing exactly what is causing the loops and self-sabotage in your life.</li>
+        <li>Equipping you with all the knowledge, tools and strategies to create fast and lasting progress.</li>
+        <li>Providing intensive, hands on support so you know exactly what to do to transform the way you live.</li>
+      </ul>
+      <p>The goal of this phase is to create drastic results in a short amount of time.</p>
+      <p>After the LIVE phase, you’ll have the remaining three months to continue receiving my support daily.</p>
+      <p class="t25">This will ensure you have:</p>
+      <ul class="list">
+        <li>Ongoing guidance for any challenges that come up for you</li>
+        <li>Tailored solutions as you grow and progress</li>
+        <li>Steady support to keep the momentum going and to celebrate every breakthrough (as there will be plenty).</li>
+      </ul>
+      <p>This program is designed to create transformative results whilst also giving you the support you need to sustain them.</p>
+    </div>
+  </section>
+
+  <!-- 8 · how will this work -->
+  <section class="blk tint-a">
+    <div class="col">
+      <p class="t30">How will this work? What is included?</p>
+      <p>The “Chosen Man” program is not just a course, it’s a fully immersive, results driven experience designed to create real change in your life.</p>
+      <p>Here is how it’ll look:</p>
+      <p class="t25">Phase one: The 3 Month LIVE</p>
+      <p>During the 3 months LIVE period, a new class is released each week that you can watch on-demand over the weekend. The classes are structured teaching designed to create breakthroughs in your identity and habits.</p>
+      <p>We will meet as a group once a week on Zoom. These two hour live sessions are where I answer questions, provide personalised coaching and solve specific problems you’re facing.</p>
+      <p>On top of the group calls, you also get 1-1 calls with me. Most coaches only ever do group calls. I go further, because I will always make time for the men who choose to invest in their growth. That’s also why enrollment is only open for 9 days and spots are limited.</p>
+      <p>If you can’t attend live it’s no problem. All calls are recorded so you can access them at any time.</p>
+      <p>In between calls, you’ll have access to written Q&amp;A in a private group chat. This is an intimate, safe space for men who are in a similar situation to you. Any questions or issues that arise between calls, this is the space to go and be supported.</p>
+      <p>You also get direct WhatsApp access to me. Not a support team, not an assistant. Me.</p>
+      <p>My approach is very personalised to where you are in your life right now. This ensures it’ll be exactly what you need to move the needle forward.</p>
+      <p>There's a lot of hands-on support and accountability. This is less like a course you take and more like an initiation where I am by your side so that you will transform in the best of ways. We’ll be on this journey together.</p>
+      <p>Logistically this looks like:</p>
+      <ul class="list">
+        <li><b>3 month LIVE with weekly calls</b> - Structured lessons and coaching that build week by week for maximum results.</li>
+        <li><b>1-1 calls with me</b> - Private coaching on top of the group calls, which most programs never offer.</li>
+        <li><b>Direct WhatsApp access to me</b> - Message me directly, not a support team.</li>
+        <li><b>Written Q&amp;A</b> - Support in between calls</li>
+        <li><b>Group accountability</b> - Work closely with men in pods matched by age, situation and the loops they're working on.</li>
+        <li><b>6 months of support</b> - to keep up the momentum you’ve built from the 3 month LIVE, you’ll have 3 extra months of Aftercare support where you'll have access to monthly coaching calls, office hours for personalised help, plus bonus workshops to support you so you keep seeing results quickly.</li>
+        <li>All the resources you’ll need to be successful.</li>
+      </ul>
+      <p>Many results will happen in the first 3 months. It's amazing what happens when we focus on this for a set amount of time to drastically change everything.</p>
+      <p class="t25">Phase two: Aftercare</p>
+      <p>While the first 3 months are just going to prepare you for everything you need. Change doesn't stop there. You'll continue to have direct access to myself, my team and all the resources for an extra 3 months, so you can continue to implement what you've learned, while being fully supported.</p>
+      <p>The first three months is powerful. But real change happens when you continue to move the needle, and watch yourself change before your eyes.</p>
+      <p>After three months, you're going to know the exact plan. You're going to know everything you need to do. You're gonna know exactly what's important and what's not.</p>
+      <p>And when you run into issues or roadblocks, you won't be alone. You've got the remaining 3 months to have my full support for anything that's coming up, any areas of support you need, just to continue this process.</p>
+      <p>You will have access to monthly coaching calls to checkin with me and optional support calls, where you can get personalised help. You can use these as needed. You can be as hands-on or as hands-off as you want.</p>
+      <p>You will continue to have access to the private chat with the small group of men you started the journey with. This is where you can ask written Q&amp;A questions and get my support in between live calls. You'll have this for the whole 6 months period.</p>
+      <p>So much will change in the first 3 months. And after that you can just keep going and tap back in whenever you've got questions or changes or adjustments or needs help.</p>
+      <p>It's so much easier to move forward with progress when you are not doing this alone and always have a safe space to tap into whenever you need.</p>
+      <p class="t25">(NEW) Access to Your 24/7 Chosen Man AI Coach</p>
+      <div class="ph gif-ph">[GIF/Image] Chosen Man AI in action</div>
+      <p>Besides the abundance of live calls where you can be supported, and the written Q&amp;A inside your small breakout groups... You also have access to an INSANE customised AI coach that has been specifically trained for "Chosen Man" members.</p>
+      <p><b>CHOSEN MAN AI</b> - It is trained on my frameworks, my coaching style, my processes and tools. I built it so men in the program have support in between coaching calls, so you can catch a loop the moment it starts, work through a trigger, or get clear on your next step, whenever and wherever you need it.</p>
+      <p><b>THE PROTOCOL TRACKER</b> - Your daily dashboard, yours for life. It holds the work you do between calls, tracks your non-negotiables and shows you the proof that you're changing, so nothing drifts and you can see your progress.</p>
+      <p><b>THE REWIRING LIBRARY</b> - Guided visualisations and subconscious rewiring sessions to use alongside the weekly work. I created them so you can go deeper on your own time, and keep reinforcing the new identity in between calls.</p>
+      <p>The feedback from current men inside "Chosen Man" about these new additions has been incredible. You'll wonder how you managed without them. They will blow your mind with how insightful and helpful they are.</p>
+      <p>The best part? The AI is available 24/7 and it can never feel annoyed or tired. So you can ask the same question bothering you over and over until it's perfectly clear. You can talk to it at any time (even when you wake up at 2am spiralling about where your life is going - now you'll have someone to talk to)</p>
+    </div>
+  </section>
+
+  <!-- 9 · join CTA -->
+  <section class="join">
+    <div class="col">
+      <h2>Join "Chosen Man"</h2>
+      <a class="btn-join if-open" href="#join">Join Today</a>
+      <a class="btn-join if-waitlist if-closed" href="#waitlist">Join the Waitlist</a>
+      <div class="cta-notes">
+        <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
+        <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
+        <span>Limited spots available</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · what can you expect -->
+  <section class="blk tint-a">
+    <div class="col">
+      <p class="t25">What Can You Expect?</p>
+      <p>This program attracts the most committed men, those who are open-minded and ready to move. When you are surrounded by driven men, you will be inspired and energised to move forward in breaking your loops and creating real results, faster than if you were on your own.</p>
+      <p class="it">All I ask for is <b>three months of your full commitment</b> to my proven process.</p>
+      <p>In those three months, you’ll see undeniable evidence that it’s working. You will start showing up, keeping your word and transforming before your eyes.</p>
+      <p>If you’re ready to go ALL IN and fast-track your progress, Chosen Man is for you.</p>
+      <p><b>Spots are limited.</b></p>
+    </div>
+  </section>
+
+  <!-- 11 · investment -->
+  <section class="blk white">
+    <div class="col">
+      <p class="invest-h">The Investment:</p>
+      <p>For 6 months of support, designed to help you break the loops holding you back, drop the masks and rebuild your identity from the root so discipline becomes natural. You will see tangible changes within weeks.</p>
+      <p>Here is the investment for this incredible program:</p>
+      <p><b>Pay at Once Option</b><br><span data-cfg="pifPrice">£2,500</span> (one time payment)</p>
+      <p class="it">Bonus for pay at once is 3 months of free access to the paid Chosen Man community after the program, where you'll keep your pod and my support, plus an extra private 1:1 session with me. This is valued at <span data-cfg="pifBonusValue">£800</span>.</p>
+      <p><b>Payment Plan Options</b><br><span data-cfg="planPrice">£859</span> per month for <span data-cfg="planCount">3</span> months</p>
+      <p>If you need a different payment plan or payment method, send me a message on instagram.</p>
+      <a class="btn-join if-open" href="#join">Join Now</a>
+    </div>
+  </section>
+
+  <!-- 12 · what makes it different -->
+  <section class="vid" style="padding-top:0">
+    <div class="col">
+      <p class="t26">What makes your program different?</p>
+      <p class="t22">Hear it from me 👇</p>
+      <div class="ph video"><span>[Video] What makes Chosen Man different</span></div>
+    </div>
+  </section>
+
+  <!-- 13 · screenshot wall -->
+  <section class="blk white" style="padding-top:0">
+    <div class="col">
+      <p class="wall-h">The men who go ALL IN see real, measurable transformation:</p>
+      <div class="wall">
+        <div class="ph">[Screenshot] Client message 1</div><div class="ph">[Screenshot] Client message 2</div>
+        <div class="ph">[Screenshot] Client message 3</div><div class="ph">[Screenshot] Client message 4</div>
+        <div class="ph">[Screenshot] Client message 5</div><div class="ph">[Screenshot] Client message 6</div>
+        <div class="ph">[Screenshot] Client message 7</div><div class="ph">[Screenshot] Client message 8</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · join + price pills -->
+  <section class="blk white" id="join">
+    <div class="col">
+      <div class="join-top"><span class="pre">Join</span><span class="name">Chosen Man</span></div>
+      <div class="col if-open" style="gap:16px;width:100%">
+        <a class="pill" href="#" data-link="checkoutPif"><b>Pay in Full *</b><span>One time payment <span data-cfg="pifPrice">£2,500</span></span></a>
+        <p class="or">OR:</p>
+        <a class="pill wide" href="#" data-link="checkoutPlan"><b>Payment Plan</b><span><span data-cfg="planCount">3</span> Monthly Payments of <span data-cfg="planPrice">£859</span></span></a>
+      </div>
+      <a class="btn-join if-waitlist if-closed" href="#waitlist">Join the Waitlist</a>
+      <div class="cta-notes">
+        <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
+        <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
+        <span class="if-closed">This intake is closed.</span>
+        <span>If you need a different payment plan or payment method, <a href="#" data-link="instagramUrl" style="color:var(--link)">message me</a> on instagram.</span>
+      </div>
+      <p><span class="hl-pink"><b>﹡Pay in full BONUS</b></span> - Bonus for paying in full is 3 months of free access to the paid Chosen Man community, plus an extra private 1:1 session with me. This is valued at <span data-cfg="pifBonusValue">£800</span>.</p>
+    </div>
+  </section>
+
+  <!-- 15–19 · testimonials (blank; character targets match the reference so lines stay aligned) -->
+  <section class="blk tint-a"><div class="tm">
+    <div class="photo">[Photo]<br>Steven</div>
+    <h3>“[Headline result in his words, ~100 characters, e.g. what he can do now that he couldn't before]”</h3>
+    <div class="body">
+      <p class="ph-line">[~200 characters: where he was when he started. His age, the loop, what he'd already tried]</p>
+      <p class="ph-line">[~75: Within X weeks of starting the process, I noticed…]</p>
+      <p class="ph-line">- [~25: first change]</p><p class="ph-line">- [~25: second change]</p><p class="ph-line">- [~45: third change]</p>
+      <p class="ph-line">[~140: how it felt, in his words]</p>
+      <p class="ph-line">Within 6 months...</p>
+      <p class="ph-line">- [~70: bigger result]</p><p class="ph-line">- [~45: bigger result]</p><p class="ph-line">- [~30: bigger result]</p>
+      <p class="ph-line">[~150: his closing line about the process]</p>
+      <a class="more" href="#">Read full story →</a>
+      <div class="who"><span class="n">- Steven</span><span class="l">[City, Country]</span><span class="br">([~100 characters: age, work, one line on his situation before and after])</span></div>
+    </div>
+  </div></section>
+
+  <section class="blk white"><div class="tm">
+    <div class="photo">[Photo]<br>Jay</div>
+    <h3>“[Headline result in his words, ~100 characters, e.g. what he can do now that he couldn't before]”</h3>
+    <div class="body">
+      <p class="ph-line">[~200 characters: where he was when he started]</p>
+      <p class="ph-line">[~75: Within X weeks of starting the process, I noticed…]</p>
+      <p class="ph-line">- [~25: first change]</p><p class="ph-line">- [~25: second change]</p><p class="ph-line">- [~45: third change]</p>
+      <p class="ph-line">[~150: his closing line about the process]</p>
+      <a class="more" href="#">Read full story →</a>
+      <div class="who"><span class="n">- Jay</span><span class="l">[City, Country]</span><span class="br">([~100 characters: age, work, one line on his situation])</span></div>
+    </div>
+  </div></section>
+
+  <section class="blk tint-b"><div class="tm">
+    <div class="photo">[Photo]<br>Tomasz</div>
+    <h3>“[Headline result in his words, ~100 characters, e.g. what he can do now that he couldn't before]”</h3>
+    <div class="body">
+      <p class="ph-line">[~200 characters: where he was when he started]</p>
+      <p class="ph-line">[~75: Within X weeks of starting the process, I noticed…]</p>
+      <p class="ph-line">- [~25: first change]</p><p class="ph-line">- [~25: second change]</p><p class="ph-line">- [~45: third change]</p>
+      <p class="ph-line">[~150: his closing line about the process]</p>
+      <a class="more" href="#">Read full story →</a>
+      <div class="who"><span class="n">- Tomasz</span><span class="l">[City, Country]</span><span class="br">([~100 characters: age, work, one line on his situation])</span></div>
+    </div>
+  </div></section>
+
+  <section class="blk white"><div class="tm">
+    <div class="photo">[Photo]<br>Vitus</div>
+    <h3>“[Headline result in his words, ~100 characters, e.g. what he can do now that he couldn't before]”</h3>
+    <div class="body">
+      <p class="ph-line">[~200 characters: where he was when he started]</p>
+      <p class="ph-line">[~75: Within X weeks of starting the process, I noticed…]</p>
+      <p class="ph-line">- [~25: first change]</p><p class="ph-line">- [~25: second change]</p><p class="ph-line">- [~45: third change]</p>
+      <p class="ph-line">[~150: his closing line about the process]</p>
+      <a class="more" href="#">Read full story →</a>
+      <div class="who"><span class="n">- Vitus</span><span class="l">[City, Country]</span><span class="br">([~100 characters: age, work, one line on his situation])</span></div>
+    </div>
+  </div></section>
+
+  <section class="blk tint-a"><div class="tm">
+    <div class="photo">[Photo]<br>Client 5</div>
+    <h3>“[Headline result in his words, ~100 characters, e.g. what he can do now that he couldn't before]”</h3>
+    <div class="body">
+      <p class="ph-line">[~200 characters: where he was when he started]</p>
+      <p class="ph-line">[~75: Within X weeks of starting the process, I noticed…]</p>
+      <p class="ph-line">- [~25: first change]</p><p class="ph-line">- [~25: second change]</p><p class="ph-line">- [~45: third change]</p>
+      <p class="ph-line">[~150: his closing line about the process]</p>
+      <a class="more" href="#">Read full story →</a>
+      <div class="who"><span class="n">- [Name]</span><span class="l">[City, Country]</span><span class="br">([~100 characters: age, work, one line on his situation])</span></div>
+    </div>
+  </div></section>
+
+  <!-- 20 · Q&A -->
+  <section class="blk tint-b">
+    <div class="col">
+      <p class="qa-h">Q&amp;A</p>
+      <div class="faq">
+        <details>
+          <summary>Is this one-on-one or group?</summary>
+          <div class="a">
+            <p>This is a group program with 1-1 support built in, which most programs don't offer. You get private 1-1 calls with me, and on the weekly live calls I run hot seats where I coach you directly on exactly what you're facing, in front of men who are dealing with the same things.</p>
+            <p>You'll also be split into a small accountability pod of men matched by age and situation, so the conversations stay relevant to you. Between calls, you can post in the private chat or message me directly on WhatsApp.</p>
+            <p>Most men find the group makes the work faster, not slower, because hearing another man say out loud what you've never admitted is often the moment it shifts for you. And if you pay in full, you also get an extra private 1:1 session with me on top of everything else.</p>
+            <div class="ph video"><span>[Video] 1:1 or group?</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>How much time will this take? Is it too hard to do?</summary>
+          <div class="a">
+            <p>Short answer: it fits into your week more than it adds to your plate. Watch below for exactly what it takes.</p>
+            <div class="ph video"><span>[Video] Time commitment</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>How quickly can I expect to see results?</summary>
+          <div class="a">
+            <p>Short answer: most men notice early shifts in the first few weeks, and every man moves at his own pace. Watch below for what the first 90 days look like.</p>
+            <div class="ph video"><span>[Video] How fast will I see results?</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>I've tried coaching and it didn't work. Why is this any different?</summary>
+          <div class="a">
+            <p>Short answer: most coaching works on behaviour: routines, goals and accountability for habits. That's decorating a house with cracked foundations. We start with the foundations, so the behaviour holds. Watch below for why it lands differently this time.</p>
+            <div class="ph video"><span>[Video] "Coaching didn't work for me"</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>Is it too late for me?</summary>
+          <div class="a">
+            <p>Short answer: no. The longer you've run a loop, the deeper it's worn in, and it's easier the earlier you start. However, today is the youngest you'll ever be. Men in their 30s and 40s have gone through this process and seen real change, because identity can shift at any age. Watch below.</p>
+            <div class="ph video"><span>[Video] "Is it too late for me?"</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>I'm not in a crisis. Is this program really for me?</summary>
+          <div class="a">
+            <p>Short answer: yes. Most men inside are functional on the outside and drifting underneath. Watch below to see why.</p>
+            <div class="ph video"><span>[Video] "I'm not in a crisis"</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>Are you a therapist? What makes you qualified?</summary>
+          <div class="a">
+            <p>I'm not a therapist. But I consistently get results with men that years of courses, podcasts and self-help content haven't given them, because I go to the root instead of the routine.</p>
+            <p>I grew up on a council estate with two alcoholic parents, barely speaking English, stuttering, and getting picked on for it. My mum died when I was eight. The last thing she told me was to never settle for less and to keep my standards high, no matter what anyone says. I went into foster care at eleven, and from then on I taught myself everything, from YouTube videos and ancient texts, because nobody was coming to do it for me.</p>
+            <p>I built Chosen Man because I was the man watching other people's videos wondering what was actually stopping me. It wasn't the estate or the money or the stutter. It was what was running underneath. Once I went for that, everything moved.</p>
+            <p>I did this on myself from the worst starting position you can get. Since then I've done it with over [100] men, many of them older than me, who had tried everything else first.</p>
+            <p>To be clear, this is coaching, not therapy. If you're dealing with a mental health crisis, please speak to your GP or a qualified professional first. The Initiation can work alongside that, not instead of it. Don't take my word for any of this. Watch the replay and hear it from the men themselves.</p>
+            <div class="ph video"><span>[Video] "What makes you qualified?"</span></div>
+          </div>
+        </details>
+        <details>
+          <summary>Can I talk to a man you've worked with?</summary>
+          <div class="a">
+            <p>My clients are mostly busy working men without a lot of spare time, and I don't give out their contact details out of respect for their privacy. What I do instead is let you hear from them directly. Watch the "Man to Man" replays, where men I've worked with tell their stories in their own words, unscripted, about where they were and what changed. You can also watch their videos and read their stories on this page. If you still have questions after that, send me a message on Instagram and I'll answer you personally. I'd rather you decide with every question answered.</p>
+          </div>
+        </details>
+      </div>
+      <p class="more-q"><a href="#faq">Have more questions? Watch all [N]+ video answers here →</a></p>
+    </div>
+  </section>
+
+  <!-- 21 · join CTA -->
+  <section class="join">
+    <div class="col">
+      <h2>Join "Chosen Man"</h2>
+      <a class="btn-join if-open" href="#join">Join Today</a>
+      <a class="btn-join if-waitlist if-closed" href="#waitlist">Join the Waitlist</a>
+      <div class="cta-notes">
+        <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
+        <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
+        <span>Limited spots available</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 · what clients are saying -->
+  <section class="blk tint-a">
+    <div class="col">
+      <p class="cs-h">What Clients Are Saying:</p>
+      <div class="cs">
+        <figure><figcaption>Steven ([Country]):</figcaption><div class="ph video"></div></figure>
+        <figure><figcaption>Jay ([Country]):</figcaption><div class="ph video"></div></figure>
+        <figure><figcaption>Tomasz ([Country]):</figcaption><div class="ph video"></div></figure>
+        <figure><figcaption>Vitus ([Country]):</figcaption><div class="ph video"></div></figure>
+        <figure><figcaption>[Name] ([Country]):</figcaption><div class="ph video"></div></figure>
+        <figure><figcaption>[Name] ([Country]):</figcaption><div class="ph video"></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23 · going all in -->
+  <section class="vid" style="padding-top:40px">
+    <div class="col">
+      <p class="t26">What does going ALL IN mean?</p>
+      <p class="t22">Click below to watch 👇</p>
+      <div class="ph video"><span>[Video] What going ALL IN means</span></div>
+      <ul class="replays">
+        <li><a href="#replay">Man to Man #1 ([Date])</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 24 · final join CTA -->
+  <section class="join last">
+    <div class="col">
+      <h2>Join "Chosen Man"</h2>
+      <a class="btn-join if-open" href="#join">Join Today</a>
+      <a class="btn-join if-waitlist if-closed" href="#waitlist">Join the Waitlist</a>
+      <div class="cta-notes">
+        <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
+        <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
+        <span>Limited spots available</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>Results vary and depend on the work you put in. Chosen Man is coaching, not therapy or medical treatment. · <a href="#" data-link="terms">Terms</a> · <a href="#" data-link="privacy">Privacy</a></footer>
+</main>
+
+<!-- =========================== PAGE 3: REPLAY WATCH PAGE =========================== -->
+<main id="replay" class="view view-page rp" hidden>
+  <div class="col">
+    <p class="lbl">Replay available for...</p>
+    <div class="units muted" style="margin-top:-14px">
+      <div><b data-rcd="d">0</b><span>Days</span></div>
+      <div><b data-rcd="h">00</b><span>Hours</span></div>
+      <div><b data-rcd="m">00</b><span>Minutes</span></div>
+      <div><b data-rcd="s">00</b><span>Seconds</span></div>
+    </div>
+    <p class="rp-title" style="margin-top:44px">"Man to Man"</p>
+    <p class="rp-date">([Date of call])</p>
+    <p class="rp-sub">Meet men who broke their loops, dropped the mask and started keeping their word.</p>
+    <div class="ph video"><span>[Replay] "Man to Man" LIVE #1, full call</span></div>
+    <div class="rp-desc">
+      <p>Replay from our <b>"Man to Man"</b> call, <i>a raw virtual gathering to meet men I've worked with. They tell you where they were, the loops they kept running, and what actually changed.</i></p>
+      <p><b>You'll leave knowing exactly why your resets keep collapsing, and what it looks like when they stop.</b></p>
+      <ul class="chapters">
+        <li><time>[00:00:00]</time> Intro to the men</li>
+        <li><time>[00:00:00]</time> Where they were: the loop, the masks, the quiet anger</li>
+        <li><time>[00:00:00]</time> What changed (and how fast)</li>
+        <li><time>[00:00:00]</time> <b>My story: from the estate to Chosen Man</b></li>
+        <li><time>[00:00:00]</time> About the Chosen Man Initiation</li>
+      </ul>
+    </div>
+    <a class="btn-solid rp-btn if-open" href="#join"><span>Enrollment is now OPEN</span><span>➡️ Join "Chosen Man"</span></a>
+    <a class="btn-solid rp-btn if-waitlist if-closed" href="#waitlist"><span>Enrollment opens soon</span><span>➡️ Join the Waitlist</span></a>
+    <p class="rp-more">More from "Man to Man"</p>
+    <p class="rp-title" style="margin-top:10px">Additional Q&amp;As</p>
+    <div class="ph video"><span>[Replay] Q&amp;A from the same call</span></div>
+    <a class="btn-solid rp-btn2 if-open" href="#join"><span>Join "Chosen Man" Now</span><span>⏳ Doors Close on <span data-cfg="closeDateShort">[DATE]</span></span></a>
+    <a class="btn-solid rp-btn2 if-waitlist if-closed" href="#waitlist"><span>Join the Waitlist</span><span>Hear first when doors open</span></a>
+  </div>
+</main>
+
+<!-- =========================== PAGE 4: CHECKOUT (pay in full / payment plan) =========================== -->
+<main id="checkout" class="view co" hidden>
+  <form class="col" id="co-form" novalidate>
+    <div class="co-head">
+      <span class="a">Enroll in</span>
+      <span class="b">Chosen Man</span>
+      <span class="c co-plan-only">(Payment Plan)</span>
+    </div>
+    <p class="co-kick">Here's the kind of experience that's waiting for you inside:</p>
+    <div class="co-imgs"><div class="ph">[Screenshot] Client win 1</div><div class="ph">[Screenshot] Client win 2</div></div>
+    <hr>
+    <div class="co-grid">
+      <div class="co-left">
+        <p class="co-h">Order details</p>
+        <div class="co-row">
+          <input id="co-first" placeholder="Your First Name" aria-label="First name" autocomplete="given-name">
+          <input id="co-last" placeholder="Last Name" aria-label="Last name" autocomplete="family-name">
+        </div>
+        <input id="co-email" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
+        <hr>
+        <div class="card-ph" aria-label="Payment information">
+          <p class="pay-h">🔒 Secure payment on the next step</p>
+          <p class="pay-t">When you click <b>Enroll Now</b>, you'll go to Stripe's secure checkout to enter your card. Your card details never touch this site.</p>
+          <p class="pay-cards">Visa · Mastercard · Amex · Apple Pay · Google Pay</p>
+        </div>
+      </div>
+      <aside class="summary">
+        <p class="co-h">Order Summary</p>
+        <div>
+          <div class="sum-row"><span>Today's total</span><span id="co-total">£0.00</span></div>
+          <p class="sum-note" id="co-note" style="margin-top:20px"></p>
+        </div>
+      </aside>
+    </div>
+    <p class="co-terms">By submitting this form, I agree to the <a href="#" data-link="terms">Terms of Service</a>.</p>
+    <p class="err" id="co-err" hidden>Add your first name and a valid email to enroll.</p>
+    <button type="submit" class="btn-solid co-btn">Enroll Now</button>
+    <div class="co-inc">
+      <p>"Chosen Man" includes:</p>
+      <ul>
+        <li>6 months support (3 months intensive + 3 months aftercare)</li>
+        <li>3 months of structured curriculum, designed to create breakthroughs in identity and discipline. Weekly calls, classes, coaching.</li>
+        <li>Access to my frameworks on identity, discipline and mindset to help you break your loops while building real confidence and drive.</li>
+        <li>1-1 calls with me, not just group calls</li>
+        <li>Direct WhatsApp access to me</li>
+        <li>Written Q&amp;A support between calls</li>
+        <li>Working closely with [Your name]</li>
+        <li>4 Step Initiation Process (Exposure, Release, The Shift, The Operating System)</li>
+        <li>All the resources you'll need to be successful</li>
+      </ul>
+      <p class="co-pif-only"><b>Paying in full bonus. By paying in full, you'll also get:</b></p>
+      <ul class="co-pif-only"><li>3 months in the paid Chosen Man community for Free - plus an extra private 1:1 session with me. Valued at <span data-cfg="pifBonusValue">£800</span>. You can use this after the program ends.</li></ul>
+      <p class="co-plan-only">If you want the pay in full bonus (3 Free months in the Chosen Man community + an extra private 1:1 worth <span data-cfg="pifBonusValue">£800</span>), you can find the <a href="#checkout-pif">pay in full payment page here</a>.</p>
+    </div>
+    <p class="co-proof">This process is going to change your life - just like it has for these Men:</p>
+    <div class="co-imgs">
+      <div class="ph">[Screenshot] Client message</div><div class="ph">[Screenshot] Client message</div>
+      <div class="ph">[Screenshot] Client message</div><div class="ph">[Screenshot] Client message</div>
+      <div class="ph">[Screenshot] Client message</div><div class="ph">[Screenshot] Client message</div>
+    </div>
+  </form>
+</main>
+
+<!-- =========================== PAGE 5: THANK YOU / ONBOARDING =========================== -->
+<main id="thanks" class="view view-page ty" hidden>
+  <div class="col">
+    <h1>You're in.</h1>
+    <p class="sub">Welcome to the Chosen Man Initiation. Watch this short video, then do the steps below today.</p>
+    <div class="ph video"><span>[Video] Welcome message from you, 2 min</span></div>
+    <ol class="steps">
+      <li><div class="d"><p class="t">Check your email</p><p>Your receipt and login details are on their way. Can't see them? Check your spam folder, then reply to us.</p></div></li>
+      <li><div class="d"><p class="t">Join the private Skool group</p><p>This is where your written Q&amp;A, your pod and the weekly classes live.</p><a class="btn-solid go" href="#" data-link="skool">Join the group</a></div></li>
+      <li><div class="d"><p class="t">Save my WhatsApp number</p><p>Message me on WhatsApp at <b>[your number]</b>. Say hello and tell me the loop you're here to break.</p></div></li>
+      <li><div class="d"><p class="t">Introduce yourself in your pod</p><p>Name, age, and the loop you're here to break. Keep it honest. Every man in there is doing the same.</p></div></li>
+      <li><div class="d"><p class="t">Put the first live call in your calendar</p><p><b>[Day, date] at [time] UK</b> on Zoom. The link is pinned in the group.</p></div></li>
+      <li class="pif-only"><div class="d"><p class="t">Book your extra private 1:1 <span class="tag-pif">Pay in full bonus</span></p><p>Pick a time for your private session with me.</p><a class="btn-solid go" href="#" data-link="booking">Book your 1:1</a></div></li>
+    </ol>
+    <p class="small" style="text-align:center">Questions? Message me on Instagram <b data-cfg="instagram">[@handle]</b> or reply to your welcome email.</p>
+  </div>
+</main>
+
+<!-- =========================== PAGE 6: WAITLIST =========================== -->
+<main id="waitlist" class="view view-page grey wl-hero" hidden>
+  <div class="col">
+    <div class="timer-blk if-waitlist" style="background:transparent;padding:0">
+      <p class="lbl">Next enrollment opens in:</p>
+      <div class="units">
+        <div><b data-cd="d">0</b><span>Days</span></div>
+        <div><b data-cd="h">00</b><span>Hours</span></div>
+        <div><b data-cd="m">00</b><span>Minutes</span></div>
+        <div><b data-cd="s">00</b><span>Seconds</span></div>
+      </div>
+    </div>
+    <h1>Get on the Waitlist for the Next Chosen Man Intake</h1>
+    <p class="sub">Waitlist members hear first when the doors open, before anyone else. Spots are limited and they go to the waitlist first.</p>
+    <form class="card wl-card" id="wl-form" novalidate>
+      <div id="wl-fields" style="display:flex;flex-direction:column">
+        <span class="cue">👇 Add your details to join the waitlist</span>
+        <input id="wl-first" placeholder="First Name" aria-label="First Name" autocomplete="given-name">
+        <input id="wl-email" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
+        <input id="wl-phone" type="tel" placeholder="Phone (for Texting)" aria-label="Phone (for Texting)" autocomplete="tel">
+        <p class="err" id="wl-err" hidden>Add your first name and a valid email to join the waitlist.</p>
+        <button type="submit">Join the Waitlist</button>
+      </div>
+      <div class="wl-done" id="wl-done" hidden>
+        <b>You're on the list.</b>
+        <p class="p" style="margin:0">We'll email and text you the moment the doors open. While you wait, watch the last "Man to Man" call.</p>
+        <a href="#replay" style="color:var(--cta);font-weight:700">Watch the replay →</a>
+      </div>
+    </form>
+    <p class="t25" style="text-align:center">While you wait</p>
+    <ul class="list" style="align-self:center;max-width:640px">
+      <li>Watch the <a href="#replay">"Man to Man" replay</a> and hear from the men who've done this.</li>
+      <li>Write down the habit you've reset the most times. That's where we'll start.</li>
+      <li>Watch the <a href="#faq">video answers</a> to the most common questions.</li>
+    </ul>
+  </div>
+</main>
+
+<!-- =========================== PAGE 7: FAQ VIDEO LIBRARY =========================== -->
+<main id="faq" class="view view-page faqlib" hidden>
+  <div class="col">
+    <h1>Questions About the Chosen Man Initiation</h1>
+    <p class="sub">Straight answers, on video. Press play on any question.</p>
+    <div class="fl-group"><p class="t25">The program</p><div class="fl-grid">
+      <figure><figcaption>Is this one-on-one or group?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What happens on the weekly calls?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What's an accountability pod?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What happens after the 12 weeks?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What is Chosen Man AI?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What's the Protocol tracker?</figcaption><div class="ph video"></div></figure>
+    </div></div>
+    <div class="fl-group"><p class="t25">Time and format</p><div class="fl-grid">
+      <figure><figcaption>How much time will this take?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What if I can't make the live calls?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Do I need to be in the UK?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>When does it start?</figcaption><div class="ph video"></div></figure>
+    </div></div>
+    <div class="fl-group"><p class="t25">Results</p><div class="fl-grid">
+      <figure><figcaption>How quickly will I see results?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>I've tried coaching before and it didn't work.</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>I'm not in a crisis. Is this for me?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What if I fall off during the program?</figcaption><div class="ph video"></div></figure>
+    </div></div>
+    <div class="fl-group"><p class="t25">Money</p><div class="fl-grid">
+      <figure><figcaption>Is there a payment plan?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What's the pay-in-full bonus?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>What's your refund policy?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Can I pay a different way?</figcaption><div class="ph video"></div></figure>
+    </div></div>
+    <div class="fl-group"><p class="t25">About me</p><div class="fl-grid">
+      <figure><figcaption>Are you a therapist? What makes you qualified?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Is this therapy?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Can I talk to a man you've worked with?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Why did you start Chosen Man?</figcaption><div class="ph video"></div></figure>
+    </div></div>
+    <a class="btn-join if-open" href="#join" style="margin-top:20px">Join Today</a>
+    <a class="btn-join if-waitlist if-closed" href="#waitlist" style="margin-top:20px">Join the Waitlist</a>
+  </div>
+</main>
+
+<!-- draft-only switcher: delete before launch -->
+<div class="preview" id="draftbar" role="toolbar" aria-label="Draft preview">
+  <label for="pv-page">DRAFT page:</label>
+  <select id="pv-page" style="font:inherit;padding:5px 6px;border-radius:4px">
+    <option value="optin">1 · Replay opt-in</option>
+    <option value="sales">2 · Sales page</option>
+    <option value="replay">3 · Replay watch page</option>
+    <option value="checkout-pif">4a · Checkout: pay in full</option>
+    <option value="checkout-plan">4b · Checkout: payment plan</option>
+    <option value="thanks">5 · Thank you / onboarding</option>
+    <option value="waitlist">6 · Waitlist</option>
+    <option value="faq">7 · FAQ video library</option>
+  </select>
+  <span>Cart:</span>
+  <button type="button" id="pv-wait" data-state="waitlist">Waitlist</button>
+  <button type="button" id="pv-open" data-state="open">Open</button>
+  <button type="button" id="pv-last" data-state="lastday">Last day</button>
+  <button type="button" id="pv-closed" data-state="closed">Closed</button>
+</div>
+
+<script>
+/* ============================ CONFIG ============================
+   Leave openAt/closeAt null to preview with demo dates
+   (opened yesterday, closes in 9 days). Real format: "2026-11-18T22:00:00+00:00"
+   Links starting with # move between the draft's pages. In your page builder,
+   replace them with the real page URLs.
+================================================================= */
+const CONFIG = {
+  eventNumber: "#1",
+  openAt: "2026-10-15T20:00:00+01:00",   // doors open at the end of the live call
+  closeAt: "2026-10-24T22:00:00+01:00",  // hard close, 9 days later (UK time)
+  pifPrice: "£2,500",
+  pifBonusValue: "£800",
+  planCount: "3",
+  planPrice: "£859",
+  instagram: "[@handle]",
+  links: {
+    sales: "#sales", waitlist: "#waitlist", qaReplay: "#replay", faqVideos: "#faq",
+    checkoutPif: "#checkout-pif", checkoutPlan: "#checkout-plan",
+    instagramUrl: "#", skool: "#", booking: "#", terms: "#", privacy: "#"
+  },
+  closedRedirect: null,  // e.g. "#waitlist" to send sales-page visitors there once the cart closes
+  // Sign-ups are saved to this Supabase table (see supabase-funnel-leads.sql). The anon key is public by design;
+  // the table only allows inserts, so nobody can read your leads from the website.
+  supabase: { url: "", anonKey: "", table: "funnel_leads" },
+  // Stripe Payment Links. After paying, Stripe should send buyers to /thanks (pay in full) or /thanks-plan (payment plan).
+  stripe: { pif: "", plan: "" }
+};
+
+/* ======================= EMAIL + SMS SEQUENCE ======================= */
+const MAILS = [];
+
+(function () {
+  const DAY = 864e5, now0 = Date.now();
+  const openAt = CONFIG.openAt ? new Date(CONFIG.openAt).getTime() : now0 - DAY;
+  const closeAt = CONFIG.closeAt ? new Date(CONFIG.closeAt).getTime() : now0 + 9 * DAY + 3.5 * 36e5;
+  let override = null, offset = 0, plan = "pif";
+
+  const fmtDate = t => new Date(t).toLocaleDateString("en-GB", { weekday: "long", month: "long", day: "numeric" });
+  const fmtShort = t => new Date(t).toLocaleDateString("en-GB", { weekday: "long", month: "short", day: "numeric" });
+  const fmtTime = t => new Date(t).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true, timeZoneName: "short" });
+  const money = s => /\.\d\d$/.test(s) ? s : s + ".00";
+  const fill = Object.assign({}, CONFIG, { openDate: fmtDate(openAt), closeDate: fmtDate(closeAt), closeDateShort: fmtShort(closeAt), closeTime: fmtTime(closeAt) });
+  document.querySelectorAll("[data-cfg]").forEach(el => { const v = fill[el.dataset.cfg]; if (typeof v === "string") el.textContent = v; });
+  document.querySelectorAll("[data-link]").forEach(el => { const v = CONFIG.links[el.dataset.link]; if (v) el.setAttribute("href", v); });
+
+  const $ = id => document.getElementById(id);
+  const sales = $("sales");
+  const pad = n => String(Math.max(0, n)).padStart(2, "0");
+  const split = ms => { ms = Math.max(0, ms); const d = Math.floor(ms / DAY); ms -= d * DAY; const h = Math.floor(ms / 36e5); ms -= h * 36e5; const m = Math.floor(ms / 6e4); ms -= m * 6e4; return { d, h, m, s: Math.floor(ms / 1e3) }; };
+
+  function tick() {
+    const now = Date.now() + offset;
+    const s = now < openAt ? "waitlist" : now < closeAt ? "open" : "closed";
+    const target = s === "waitlist" ? openAt : s === "open" ? closeAt : null;
+    if (s === "closed" && CONFIG.closedRedirect && override === null && !sales.hidden) { location.href = CONFIG.closedRedirect; return; }
+    document.querySelectorAll(".if-waitlist, .if-open, .if-closed").forEach(el => { el.hidden = !el.classList.contains("if-" + s); });
+    if (target) {
+      const t = split(target - now);
+      document.querySelectorAll("[data-cd]").forEach(el => {
+        const k = el.dataset.cd; el.textContent = k === "d" ? (el.closest(".topbar") ? pad(t.d) : String(t.d)) : pad(t[k]);
+      });
+    }
+    const r = split(closeAt - now);   // the replay comes down when the doors close
+    document.querySelectorAll("[data-rcd]").forEach(el => { const k = el.dataset.rcd; el.textContent = k === "d" ? String(r.d) : pad(r[k]); });
+    const last = s === "open" && closeAt - now < DAY;
+    document.querySelectorAll("[data-state]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.state === (last ? "lastday" : s))));
+  }
+
+  // fixed bar on the sales page appears once the hero has scrolled away
+  // the bar takes over the moment the inline countdown leaves the screen (or, with no countdown, once the headline starts to scroll away)
+  const bar = $("topbar"), hero = $("hero"), inlineTimer = document.querySelector("#sales > .timer-blk");
+  function onScroll() {
+    const anchor = inlineTimer && !inlineTimer.hidden ? inlineTimer : hero;
+    const edge = anchor === hero ? anchor.getBoundingClientRect().top : anchor.getBoundingClientRect().bottom;
+    bar.classList.toggle("is-visible", !sales.hidden && edge < 0);
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+
+  // ---------- haptic tick when a section snaps into place (phones only) ----------
+  // Android Chrome supports navigator.vibrate after the visitor's first tap; iPhone Safari ignores it.
+  const canBuzz = "vibrate" in navigator && matchMedia("(pointer: coarse)").matches;
+  let lastSnap = null, settleTimer = null;
+  function currentSnap() {
+    const pad = matchMedia("(max-width: 600px)").matches ? 97 : 70, snaps = [...document.querySelectorAll("#sales > section, #sales > .timer-blk, #sales > footer")]
+      .filter(e => !e.hidden && getComputedStyle(e).scrollSnapAlign !== "none");
+    let best = null, bestDist = 6;   // within 6px of a snap point counts as "landed"
+    for (const e of snaps) {
+      const d = Math.abs(e.getBoundingClientRect().top - (e === snaps[0] ? 0 : pad));
+      if (d < bestDist) { best = e; bestDist = d; }
+    }
+    return best;
+  }
+  function onSettle() {
+    if (sales.hidden) return;
+    // Sections taller than the screen let the browser stop anywhere inside them. If a scroll comes to rest
+    // just past (or just short of) a section's top, finish the move so it clicks into place like a reel.
+    const pad = matchMedia("(max-width: 600px)").matches ? 97 : 70;
+    const tops = [...document.querySelectorAll("#sales > section, #sales > .timer-blk, #sales > footer")]
+      .filter(e => !e.hidden && getComputedStyle(e).scrollSnapAlign !== "none")
+      .map((e, i) => e.getBoundingClientRect().top - (i === 0 ? 0 : pad));
+    const near = tops.filter(d => Math.abs(d) > 2 && Math.abs(d) <= 120).sort((x, y) => Math.abs(x) - Math.abs(y))[0];
+    if (near !== undefined && !tops.some(d => Math.abs(d) <= 2)) { scrollBy({ top: near, behavior: "smooth" }); return; }
+    const snap = currentSnap();
+    if (snap && snap !== lastSnap) {
+      if (lastSnap !== null && canBuzz && (!navigator.userActivation || navigator.userActivation.hasBeenActive)) { try { navigator.vibrate(8); } catch (err) {} }
+      lastSnap = snap;
+    }
+  }
+  if ("onscrollend" in window) addEventListener("scrollend", onSettle);
+  else addEventListener("scroll", () => { clearTimeout(settleTimer); settleTimer = setTimeout(onSettle, 120); }, { passive: true });
+
+  // ---------- page router (hash = page) ----------
+  const VIEWS = { optin: "optin", sales: "sales", replay: "replay", "checkout-pif": "checkout", "checkout-plan": "checkout", thanks: "thanks", "thanks-plan": "thanks", waitlist: "waitlist", faq: "faq" };
+  function show(name) {
+    const target = VIEWS[name];
+    document.querySelectorAll("main.view").forEach(m => { m.hidden = m.id !== target; });
+    if (target === "checkout") setPlan(name === "checkout-plan" ? "plan" : "pif");
+    if (target === "thanks") { plan = name === "thanks-plan" ? "plan" : "pif"; document.querySelectorAll(".pif-only").forEach(el => { el.hidden = plan !== "pif"; }); }
+    $("pv-page").value = name;
+    scrollTo(0, 0); onScroll();
+    if (target === "sales") setTimeout(() => { lastSnap = currentSnap(); }, 0);   // so the very first snap also ticks
+  }
+  // "#join" opens the sales page at the Pay in Full / Payment Plan buttons (the reference's "Join Today" does the same)
+  function toJoin(smooth) {
+    if (sales.hidden) show("sales");
+    const bar = matchMedia("(max-width: 600px)").matches ? 97 : 70;
+    const top = $("join").getBoundingClientRect().top + scrollY - bar;
+    scrollTo({ top, behavior: "instant" });   // instant jump, like the reference's "Join Today" anchor
+  }
+  function go(name, smooth) {
+    if (name === "join") toJoin(smooth); else if (VIEWS[name]) show(name); else return false;
+    try { history.replaceState(null, "", "#" + name); } catch (err) {}
+    return true;
+  }
+  function route() { const h = location.hash.slice(1); if (h === "join") toJoin(false); else if (VIEWS[h]) show(h); }
+  addEventListener("hashchange", route);
+  // Handle every in-page link here, so no click ever reloads the page or lands on the opt-in by mistake
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const name = a.getAttribute("href").slice(1);
+    if (!name) { e.preventDefault(); return; }   // placeholder links (#) do nothing until you add real URLs
+    if (go(name, !sales.hidden)) e.preventDefault();
+  });
+  $("pv-page").addEventListener("change", e => { go(e.target.value); });
+  if (window.__LIVE__ && !/[?&]draft\b/.test(location.search)) document.documentElement.classList.add("live");
+
+  // ---------- lead capture (Supabase) + where visitors came from ----------
+  const UTM = {};
+  try {
+    const q = new URLSearchParams(location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { const v = q.get(k) || sessionStorage.getItem(k); if (v) { UTM[k] = v.slice(0, 120); sessionStorage.setItem(k, UTM[k]); } });
+    if (!sessionStorage.getItem("ref")) sessionStorage.setItem("ref", document.referrer.slice(0, 300));
+  } catch (err) {}
+  function saveLead(source, f) {
+    const sb = CONFIG.supabase;
+    if (!sb || !sb.url || !sb.anonKey) return Promise.resolve();
+    let ref = ""; try { ref = sessionStorage.getItem("ref") || ""; } catch (err) {}
+    const row = Object.assign({ source, first_name: f.first || null, last_name: f.last || null, email: f.email.trim().toLowerCase(), phone: f.phone || null, referrer: ref || null, page: location.pathname + location.hash }, UTM);
+    return fetch(`${sb.url}/rest/v1/${sb.table}`, {
+      method: "POST", keepalive: true,
+      headers: { apikey: sb.anonKey, Authorization: `Bearer ${sb.anonKey}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(row)
+    }).catch(() => {});   // never block the visitor if saving fails
+  }
+  const val = id => $(id).value.trim();
+
+  // ---------- checkout ----------
+  function setPlan(p) {
+    plan = p;
+    document.querySelectorAll(".co-pif-only").forEach(el => { el.hidden = p !== "pif"; });
+    document.querySelectorAll(".co-plan-only").forEach(el => { el.hidden = p !== "plan"; });
+    $("co-total").textContent = money(p === "pif" ? CONFIG.pifPrice : CONFIG.planPrice);
+    $("co-note").textContent = p === "pif" ? "One time payment." : `${CONFIG.planCount} monthly payments of ${CONFIG.planPrice}`;
+    document.title = p === "pif" ? "Chosen Man Initiation" : "Chosen Man Initiation";
+  }
+  const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  $("co-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const ok = $("co-first").value.trim() && validEmail($("co-email").value);
+    $("co-err").hidden = !!ok;
+    if (!ok) return;
+    const email = val("co-email");
+    const link = CONFIG.stripe && CONFIG.stripe[plan];
+    saveLead("checkout_" + plan, { first: val("co-first"), last: val("co-last"), email }).then(() => {
+      if (link) location.href = link + (link.includes("?") ? "&" : "?") + "prefilled_email=" + encodeURIComponent(email);
+      else go(plan === "plan" ? "thanks-plan" : "thanks");   // draft: no Stripe link yet
+    });
+  });
+
+  // ---------- opt-in → straight to the sales page ----------
+  $("optin-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const ok = $("f-first").value.trim() && validEmail($("f-email").value);
+    $("f-err").hidden = !!ok;
+    if (!ok) return;
+    saveLead("replay_optin", { first: val("f-first"), last: val("f-last"), email: val("f-email"), phone: val("f-phone") });
+    go("sales");
+  });
+
+  // ---------- waitlist ----------
+  $("wl-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const ok = $("wl-first").value.trim() && validEmail($("wl-email").value);
+    $("wl-err").hidden = !!ok;
+    if (!ok) return;
+    saveLead("waitlist", { first: val("wl-first"), email: val("wl-email"), phone: val("wl-phone") });
+    $("wl-fields").hidden = true; $("wl-done").hidden = false;
+  });
+
+  // ---------- emails ----------
+  const list = $("mail-list") || document.createElement("div");
+  let group = null;
+  function copyText(text, btn) {
+    const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => { btn.textContent = o; }, 1400); };
+    const fallback = () => {
+      const pre = btn.closest(".mail").querySelector("pre");
+      const r = document.createRange(); r.selectNodeContents(pre);
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      btn.textContent = "Selected: press Ctrl/Cmd+C";
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (err) { fallback(); }
+  }
+  MAILS.forEach(m => {
+    if (m.group) {
+      group = document.createElement("section"); group.className = "mail-group";
+      group.innerHTML = `<h2></h2><p></p>`;
+      group.querySelector("h2").textContent = m.group; group.querySelector("p").textContent = m.note;
+      list.appendChild(group); return;
+    }
+    const card = document.createElement("article"); card.className = "mail";
+    card.innerHTML = `<p class="meta"></p><p class="subj"></p><p class="prev"></p><pre></pre><div class="row"></div>`;
+    card.querySelector(".meta").textContent = `${m.when} · ${m.ch}`;
+    card.querySelector(".subj").textContent = "Subject: " + m.subject;
+    card.querySelector(".prev").textContent = "Preview text: " + m.preview;
+    card.querySelector("pre").textContent = m.body;
+    const row = card.querySelector(".row");
+    const mk = (label, text) => { const b = document.createElement("button"); b.type = "button"; b.className = "copy"; b.textContent = label; b.addEventListener("click", () => copyText(text, b)); row.appendChild(b); };
+    mk("Copy subject", m.subject); mk("Copy email", m.body);
+    if (m.sms) {
+      const sms = document.createElement("div"); sms.className = "sms"; sms.innerHTML = "<b>SMS</b><span></span>";
+      sms.querySelector("span").textContent = m.sms; card.insertBefore(sms, row);
+      mk("Copy SMS", m.sms);
+    }
+    group.appendChild(card);
+  });
+
+  // ---------- draft cart-state buttons ----------
+  document.querySelectorAll("[data-state]").forEach(b => b.addEventListener("click", () => {
+    override = b.dataset.state; const now = Date.now();
+    offset = override === "waitlist" ? (openAt - 2.5 * DAY) - now
+           : override === "open" ? (openAt + 36e5) - now
+           : override === "lastday" ? (closeAt - 6 * 36e5) - now
+           : (closeAt + 6e4) - now;
+    tick();
+  }));
+
+  if (VIEWS[location.hash.slice(1)] || location.hash === "#join") route(); else show("optin");
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
