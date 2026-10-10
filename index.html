@@ -1087,7 +1087,7 @@ const CONFIG = {
   closedRedirect: null,  // e.g. "#waitlist" to send sales-page visitors there once the cart closes
   // Sign-ups are saved to this Supabase table (see supabase-funnel-leads.sql). The anon key is public by design;
   // the table only allows inserts, so nobody can read your leads from the website.
-  supabase: { url: "", anonKey: "", table: "funnel_leads" },
+  supabase: { url: "https://atmiwjkgqmdsrocuuozv.supabase.co", anonKey: "sb_publishable_pjk4c2DdIzm_1rf3L1xgfw_BSlJfzTR", table: "funnel_leads" },
   // Stripe Payment Links. After paying, Stripe should send buyers to /thanks (pay in full) or /thanks-plan (payment plan).
   stripe: { pif: "", plan: "" }
 };
@@ -1225,7 +1225,7 @@ const MAILS = [];
     const row = Object.assign({ source, first_name: f.first || null, last_name: f.last || null, email: f.email.trim().toLowerCase(), phone: f.phone || null, referrer: ref || null, page: location.pathname + location.hash }, UTM);
     return fetch(`${sb.url}/rest/v1/${sb.table}`, {
       method: "POST", keepalive: true,
-      headers: { apikey: sb.anonKey, Authorization: `Bearer ${sb.anonKey}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+      headers: Object.assign({ apikey: sb.anonKey, "Content-Type": "application/json", Prefer: "return=minimal" }, sb.anonKey.startsWith("sb_") ? {} : { Authorization: `Bearer ${sb.anonKey}` }),
       body: JSON.stringify(row)
     }).catch(() => {});   // never block the visitor if saving fails
   }
