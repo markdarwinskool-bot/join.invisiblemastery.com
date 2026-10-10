@@ -202,6 +202,7 @@ footer { background: var(--white); padding: 10px 16px 90px; text-align: center; 
 .card .err { margin-top: 10px; font: 400 15px/20px var(--f-btn); color: #B3261E; }
 .card button { margin-top: 20px; height: 50px; border: 0; border-radius: 0; background: var(--optin-btn); color: #fff; font: 700 20px/20px var(--f-btn); cursor: pointer; }
 .card button:hover { filter: brightness(1.1); }
+.card .consent { margin: 12px 0 0; font: 400 13px/18px var(--f-btn); color: var(--soft); text-align: center; }
 
 /* ---------- shared bits for the extra pages ---------- */
 .view-page { background: var(--white); padding: 40px 16px 110px; min-height: 100vh; }
@@ -378,6 +379,7 @@ html.live .preview { display: none; }
     <label class="sr-only" for="f-phone">Phone (for texting)</label><input id="f-phone" name="phone" type="tel" placeholder="Phone (for Texting)" autocomplete="tel" inputmode="tel" enterkeyhint="done">
     <p class="err" id="f-err" hidden>Add your first name and a valid email to get the replay.</p>
     <button type="submit">Get the Replay</button>
+    <p class="consent">By signing up, you agree to get texts and emails about the Chosen Man Initiation. Reply STOP or unsubscribe any time.</p>
   </form>
 </main>
 
@@ -987,19 +989,14 @@ html.live .preview { display: none; }
         <label class="sr-only" for="wl-phone">Phone (for texting)</label><input id="wl-phone" name="phone" type="tel" placeholder="Phone (for Texting)" autocomplete="tel" inputmode="tel" enterkeyhint="done">
         <p class="err" id="wl-err" hidden>Add your first name and a valid email to join the waitlist.</p>
         <button type="submit">Join the Waitlist</button>
+        <p class="consent">By joining, you agree to get texts and emails about the Chosen Man Initiation. Reply STOP or unsubscribe any time.</p>
       </div>
       <div class="wl-done" id="wl-done" hidden>
         <b>You're on the list.</b>
-        <p class="p" style="margin:0">We'll email and text you the moment the doors open. While you wait, watch the last "Man to Man" call.</p>
-        <a href="#replay" style="color:var(--cta);font-weight:700">Watch the replay →</a>
+        <p class="p" style="margin:0">We'll text and email you the moment the doors open, before anyone else.</p>
+        <p class="p" style="margin:0">Until then, write down the habit you've reset the most times. That's where we'll start.</p>
       </div>
     </form>
-    <p class="t25" style="text-align:center">While you wait</p>
-    <ul class="list" style="align-self:center;max-width:640px">
-      <li>Watch the <a href="#replay">"Man to Man" replay</a> and hear from the men who've done this.</li>
-      <li>Write down the habit you've reset the most times. That's where we'll start.</li>
-      <li>Watch the <a href="#faq">video answers</a> to the most common questions.</li>
-    </ul>
   </div>
 </main>
 
@@ -1121,6 +1118,7 @@ const MAILS = [];
     const s = now < openAt ? "waitlist" : now < closeAt ? "open" : "closed";
     const target = s === "waitlist" ? openAt : s === "open" ? closeAt : null;
     if (s === "closed" && CONFIG.closedRedirect && override === null && !sales.hidden) { location.href = CONFIG.closedRedirect; return; }
+    if (s === "open" && override === null && !$("waitlist").hidden) { go("sales"); }   // doors open: the waitlist page sends visitors to the sales page
     document.querySelectorAll(".if-waitlist, .if-open, .if-closed").forEach(el => { el.hidden = !el.classList.contains("if-" + s); });
     if (target) {
       const t = split(target - now);
