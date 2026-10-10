@@ -1325,6 +1325,9 @@ const MAILS = [];
 
   if (VIEWS[location.hash.slice(1)] || location.hash === "#join") route(); else show("optin");
   tick(); setInterval(tick, 1000);
+  // Preview links for you only: ?draft&state=open shows the site as it will look when doors open (also: waitlist, lastday, closed)
+  const previewState = /[?&]draft\b/.test(location.search) && (location.search.match(/[?&]state=(waitlist|open|lastday|closed)\b/) || [])[1];
+  if (previewState) { $("pv-" + { waitlist: "wait", open: "open", lastday: "last", closed: "closed" }[previewState]).click(); if (location.hash === "#join") toJoin(false); }
 })();
 </script>
 
