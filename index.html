@@ -46,6 +46,7 @@
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 html, body { background: var(--white); }
 body { margin: 0; color: var(--text); font: 300 20px/26px var(--f-body); -webkit-font-smoothing: antialiased; }
 p { margin: 0; }
@@ -365,16 +366,16 @@ html.live .preview { display: none; }
 <!-- =========================== PAGE 1: OPT-IN =========================== -->
 <main id="optin" class="view optin">
   <span class="bg-note">[Full-screen background photo]</span>
-  <form class="card" id="optin-form" novalidate>
+  <form class="card" id="optin-form" autocomplete="on" novalidate>
     <h1>"Man to Man" LIVE <span data-cfg="eventNumber">#1</span> (REPLAY)</h1>
     <p class="lead">Honestly, this call was SO powerful. 🔥 If you missed it live you HAVE to watch the replay.</p>
     <p class="p">On this call, men I've worked with share their stories one-by-one, from relapsing for years and hiding behind a mask to now keeping their word, showing up every day and leading their lives.</p>
     <p class="p">Their stories will blow your mind with what's possible. 💪</p>
     <span class="cue">👇 Fill out the form below to watch the replay</span>
-    <input id="f-first" name="firstname" placeholder="First Name" aria-label="First Name" autocomplete="given-name">
-    <input id="f-last" name="lastname" placeholder="Last Name" aria-label="Last Name" autocomplete="family-name">
-    <input id="f-email" name="email" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
-    <input id="f-phone" name="sms_number" type="tel" placeholder="Phone (for Texting)" aria-label="Phone (for Texting)" autocomplete="tel">
+    <label class="sr-only" for="f-first">First name</label><input id="f-first" name="first_name" type="text" placeholder="First Name" autocomplete="given-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+    <label class="sr-only" for="f-last">Last name</label><input id="f-last" name="last_name" type="text" placeholder="Last Name" autocomplete="family-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next">
+    <label class="sr-only" for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+    <label class="sr-only" for="f-phone">Phone (for texting)</label><input id="f-phone" name="phone" type="tel" placeholder="Phone (for Texting)" autocomplete="tel" inputmode="tel" enterkeyhint="done">
     <p class="err" id="f-err" hidden>Add your first name and a valid email to get the replay.</p>
     <button type="submit">Get the Replay</button>
   </form>
@@ -884,7 +885,7 @@ html.live .preview { display: none; }
 
 <!-- =========================== PAGE 4: CHECKOUT (pay in full / payment plan) =========================== -->
 <main id="checkout" class="view co" hidden>
-  <form class="col" id="co-form" novalidate>
+  <form class="col" id="co-form" autocomplete="on" novalidate>
     <div class="co-head">
       <span class="a">Enroll in</span>
       <span class="b">Chosen Man</span>
@@ -897,10 +898,10 @@ html.live .preview { display: none; }
       <div class="co-left">
         <p class="co-h">Order details</p>
         <div class="co-row">
-          <input id="co-first" placeholder="Your First Name" aria-label="First name" autocomplete="given-name">
-          <input id="co-last" placeholder="Last Name" aria-label="Last name" autocomplete="family-name">
+          <label class="sr-only" for="co-first">First name</label><input id="co-first" name="first_name" type="text" placeholder="Your First Name" autocomplete="given-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+          <label class="sr-only" for="co-last">Last name</label><input id="co-last" name="last_name" type="text" placeholder="Last Name" autocomplete="family-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next">
         </div>
-        <input id="co-email" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
+        <label class="sr-only" for="co-email">Email</label><input id="co-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" required>
         <hr>
         <div class="card-ph" aria-label="Payment information">
           <p class="pay-h">🔒 Secure payment on the next step</p>
@@ -978,12 +979,12 @@ html.live .preview { display: none; }
     </div>
     <h1>Get on the Waitlist for the Next Chosen Man Intake</h1>
     <p class="sub">Waitlist members hear first when the doors open, before anyone else. Spots are limited and they go to the waitlist first.</p>
-    <form class="card wl-card" id="wl-form" novalidate>
+    <form class="card wl-card" id="wl-form" autocomplete="on" novalidate>
       <div id="wl-fields" style="display:flex;flex-direction:column">
         <span class="cue">👇 Add your details to join the waitlist</span>
-        <input id="wl-first" placeholder="First Name" aria-label="First Name" autocomplete="given-name">
-        <input id="wl-email" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
-        <input id="wl-phone" type="tel" placeholder="Phone (for Texting)" aria-label="Phone (for Texting)" autocomplete="tel">
+        <label class="sr-only" for="wl-first">First name</label><input id="wl-first" name="first_name" type="text" placeholder="First Name" autocomplete="given-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+        <label class="sr-only" for="wl-email">Email</label><input id="wl-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+        <label class="sr-only" for="wl-phone">Phone (for texting)</label><input id="wl-phone" name="phone" type="tel" placeholder="Phone (for Texting)" autocomplete="tel" inputmode="tel" enterkeyhint="done">
         <p class="err" id="wl-err" hidden>Add your first name and a valid email to join the waitlist.</p>
         <button type="submit">Join the Waitlist</button>
       </div>
