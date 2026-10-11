@@ -149,6 +149,9 @@ ul.list { margin: 0; padding-left: 40px; display: flex; flex-direction: column; 
 .join-top .pre { font: 700 24px/40px var(--f-body); color: var(--muted); }
 .join-top .name { font: 700 36px/44px var(--f-body); color: var(--brand); text-align: center; }
 .or { font: 700 20px/26px var(--f-body); text-align: center; }
+.ask-call { text-align: center; font: 400 16px/22px var(--f-body); color: var(--soft); }
+.ask-call a { color: var(--link); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.ask-call a:hover { text-decoration: underline; }
 
 /* ---------- testimonials ---------- */
 .tm { max-width: var(--col); margin: 0 auto; padding-left: 8px; display: grid; grid-template-columns: 195px minmax(0, 624px); column-gap: 38px; justify-content: start; align-items: start; }
@@ -640,6 +643,7 @@ html.live .preview { display: none; }
         <a class="pill" href="#" data-link="checkoutPif"><b>Pay in Full *</b><span>One time payment <span data-cfg="pifPrice">£2,500</span></span></a>
         <p class="or">OR:</p>
         <a class="pill wide" href="#" data-link="checkoutPlan"><b>Payment Plan</b><span><span data-cfg="planCount">3</span> Monthly Payments of <span data-cfg="planPrice">£859</span></span></a>
+        <p class="ask-call if-open">Have a question before you join? <a href="#" data-link="call" data-utm="join" target="_blank" rel="noopener">Book a call with me →</a></p>
       </div>
       <a class="btn-join if-waitlist if-closed" href="#waitlist">Join the Waitlist</a>
       <div class="cta-notes">
@@ -789,6 +793,7 @@ html.live .preview { display: none; }
         </details>
       </div>
       <p class="more-q"><a href="#faq">Have more questions? Watch all [N]+ video answers here →</a></p>
+      <p class="ask-call if-open">Have a question before you join? <a href="#" data-link="call" data-utm="qa" target="_blank" rel="noopener">Book a call with me →</a></p>
     </div>
   </section>
 
@@ -922,6 +927,7 @@ html.live .preview { display: none; }
     <p class="co-terms">By submitting this form, I agree to the <a href="#" data-link="terms">Terms of Service</a>.</p>
     <p class="err" id="co-err" hidden>Add your first name and a valid email to enroll.</p>
     <button type="submit" class="btn-solid co-btn">Enroll Now</button>
+    <p class="ask-call if-open">Have a question before you join? <a href="#" data-link="call" data-utm="checkout" target="_blank" rel="noopener">Book a call with me →</a></p>
     <div class="co-inc">
       <p>"Chosen Man" includes:</p>
       <ul>
@@ -1081,7 +1087,7 @@ const CONFIG = {
   links: {
     sales: "#sales", waitlist: "#waitlist", qaReplay: "#replay", faqVideos: "#faq",
     checkoutPif: "#checkout-pif", checkoutPlan: "#checkout-plan",
-    instagramUrl: "#", skool: "#", booking: "#", community: "#", terms: "#", privacy: "#"
+    instagramUrl: "#", skool: "#", booking: "#", community: "#", call: "https://calendly.com/markdarwinskool/free-call", terms: "#", privacy: "#"
   },
   closedRedirect: null,  // e.g. "#waitlist" to send sales-page visitors there once the cart closes
   // Sign-ups are saved to this Supabase table (see supabase-funnel-leads.sql). The anon key is public by design;
@@ -1106,7 +1112,7 @@ const MAILS = [];
   const money = s => /\.\d\d$/.test(s) ? s : s + ".00";
   const fill = Object.assign({}, CONFIG, { openDate: fmtDate(openAt), closeDate: fmtDate(closeAt), closeDateShort: fmtShort(closeAt), closeTime: fmtTime(closeAt) });
   document.querySelectorAll("[data-cfg]").forEach(el => { const v = fill[el.dataset.cfg]; if (typeof v === "string") el.textContent = v; });
-  document.querySelectorAll("[data-link]").forEach(el => { const v = CONFIG.links[el.dataset.link]; if (v) el.setAttribute("href", v); });
+  document.querySelectorAll("[data-link]").forEach(el => { const v = CONFIG.links[el.dataset.link]; if (v) el.setAttribute("href", el.dataset.utm && /^https?:/.test(v) ? v + (v.includes("?") ? "&" : "?") + "utm_source=funnel&utm_content=" + el.dataset.utm : v); });
 
   const $ = id => document.getElementById(id);
   const sales = $("sales");
