@@ -78,6 +78,12 @@ ul.list { margin: 0; padding-left: 40px; display: flex; flex-direction: column; 
 .ph.video::before { content: ""; position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(255,255,255,.18); }
 .ph.video::after { content: ""; position: absolute; left: 50%; top: 50%; margin: -13px 0 0 -7px; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
 .ph.video span { position: absolute; left: 12px; bottom: 10px; font-size: 13px; text-align: left; }
+.ph.video.has-video { background-size: cover; background-position: center; cursor: pointer; padding: 0; }
+.ph.video.has-video:hover::before { background: rgba(184,20,44,.9); }
+.ph.video.has-video:focus-visible { outline: 3px solid var(--cta); outline-offset: 3px; }
+.ph.video.playing { cursor: default; }
+.ph.video.playing::before, .ph.video.playing::after { display: none; }
+.ph.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* ---------- buttons ---------- */
 .btn-join { align-self: center; display: inline-flex; align-items: center; justify-content: center; width: 233px; max-width: 100%; height: 62px; border-radius: 100px; background: var(--cta); color: #fff; text-decoration: none; font: 700 22px/22px var(--f-btn); box-shadow: 0 2px 5px rgba(0,0,0,.16), 0 2px 10px rgba(0,0,0,.12); transition: filter .15s; }
@@ -736,28 +742,28 @@ html.live .preview { display: none; }
             <p>This is a group program with private 1-1 support built in, which most programs don't offer. Every 2 weeks you get a Private 1-1 Call with me, and on the Weekly Group Calls I run hot seats where I coach you directly on exactly what you're facing, in front of men who are dealing with the same things.</p>
             <p>You'll also be split into a small accountability pod of men matched by age and situation, so the conversations stay relevant to you. Between calls, you can post in the private chat or message me directly on WhatsApp.</p>
             <p>Most men find the group makes the work faster, not slower, because hearing another man say out loud what you've never admitted is often the moment it shifts for you. And if you pay in full, your Private 1-1 Calls carry on every 2 weeks for the full 6 months too.</p>
-            <div class="ph video"><span>[Video] 1:1 or group?</span></div>
+            <div class="ph video" data-video="d227b6fbb17848a5bfc3e68081879954"><span>[Video] 1:1 or group?</span></div>
           </div>
         </details>
         <details>
           <summary>How much time will this take? Is it too hard to do?</summary>
           <div class="a">
             <p>Short answer: it fits into your week more than it adds to your plate. Watch below for exactly what it takes.</p>
-            <div class="ph video"><span>[Video] Time commitment</span></div>
+            <div class="ph video" data-video="697c3b068a424320b13754957d29f84a"><span>[Video] Time commitment</span></div>
           </div>
         </details>
         <details>
           <summary>How quickly can I expect to see results?</summary>
           <div class="a">
             <p>Short answer: most men notice early shifts in the first few weeks, and every man moves at his own pace. Watch below for what the first 90 days look like.</p>
-            <div class="ph video"><span>[Video] How fast will I see results?</span></div>
+            <div class="ph video" data-video="42138270abf24744a41300a39221e452"><span>[Video] How fast will I see results?</span></div>
           </div>
         </details>
         <details>
           <summary>I've tried coaching and it didn't work. Why is this any different?</summary>
           <div class="a">
             <p>Short answer: most coaching works on behaviour: routines, goals and accountability for habits. That's decorating a house with cracked foundations. We start with the foundations, so the behaviour holds. Watch below for why it lands differently this time.</p>
-            <div class="ph video"><span>[Video] "Coaching didn't work for me"</span></div>
+            <div class="ph video" data-video="ae8ee61ce42647ab9a9cbc215785cac6"><span>[Video] "Coaching didn't work for me"</span></div>
           </div>
         </details>
         <details>
@@ -771,7 +777,7 @@ html.live .preview { display: none; }
           <summary>I'm not in a crisis. Is this program really for me?</summary>
           <div class="a">
             <p>Short answer: yes. Most men inside are functional on the outside and drifting underneath. Watch below to see why.</p>
-            <div class="ph video"><span>[Video] "I'm not in a crisis"</span></div>
+            <div class="ph video" data-video="6585a6566ce74913a6d8e2d98e7007b9"><span>[Video] "I'm not in a crisis"</span></div>
           </div>
         </details>
         <details>
@@ -782,13 +788,14 @@ html.live .preview { display: none; }
             <p>I built Chosen Man because I was the man watching other people's videos wondering what was actually stopping me. It wasn't the estate or the money or the stutter. It was what was running underneath. Once I went for that, everything moved.</p>
             <p>I did this on myself from the worst starting position you can get. Since then I've done it with over [100] men, many of them older than me, who had tried everything else first.</p>
             <p>To be clear, this is coaching, not therapy. If you're dealing with a mental health crisis, please speak to your GP or a qualified professional first. The Initiation can work alongside that, not instead of it. Don't take my word for any of this. Watch the replay and hear it from the men themselves.</p>
-            <div class="ph video"><span>[Video] "What makes you qualified?"</span></div>
+            <div class="ph video" data-video="d00b07bcd5c948cea8cd73152cfcc44e"><span>[Video] "What makes you qualified?"</span></div>
           </div>
         </details>
         <details>
           <summary>Can I talk to a man you've worked with?</summary>
           <div class="a">
             <p>My clients are mostly busy working men without a lot of spare time, and I don't give out their contact details out of respect for their privacy. What I do instead is let you hear from them directly. Watch the "Man to Man" replays, where men I've worked with tell their stories in their own words, unscripted, about where they were and what changed. You can also watch their videos and read their stories on this page. If you still have questions after that, send me a message on Instagram and I'll answer you personally. I'd rather you decide with every question answered.</p>
+            <div class="ph video" data-video="a26713db28474e1a9b24795d4e1bfe5a"></div>
           </div>
         </details>
       </div>
@@ -1012,36 +1019,36 @@ html.live .preview { display: none; }
     <h1>Questions About the Chosen Man Initiation</h1>
     <p class="sub">Straight answers, on video. Press play on any question.</p>
     <div class="fl-group"><p class="t25">The program</p><div class="fl-grid">
-      <figure><figcaption>Is this one-on-one or group?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What happens on the Weekly Group Calls?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What's an accountability pod?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What happens after the 12 weeks?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What is Chosen Man AI?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What's the Protocol tracker?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Is this one-on-one or group?</figcaption><div class="ph video" data-video="d227b6fbb17848a5bfc3e68081879954"></div></figure>
+      <figure><figcaption>What happens on the Weekly Group Calls?</figcaption><div class="ph video" data-video="963e30a4aae042858598704bfbd5a922"></div></figure>
+      <figure><figcaption>What's an accountability pod?</figcaption><div class="ph video" data-video="2a314212141c43808a20eeeefd871666"></div></figure>
+      <figure><figcaption>What happens after the 12 weeks?</figcaption><div class="ph video" data-video="b13d6691ff1a4bdf8124289132432842"></div></figure>
+      <figure><figcaption>What is Chosen Man AI?</figcaption><div class="ph video" data-video="d63d784576c649568daeaebaae31f68b"></div></figure>
+      <figure><figcaption>What's the Protocol tracker?</figcaption><div class="ph video" data-video="3504c8c4590045ee83742cec78fd0723"></div></figure>
     </div></div>
     <div class="fl-group"><p class="t25">Time and format</p><div class="fl-grid">
-      <figure><figcaption>How much time will this take?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What if I can't make the live calls?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>Do I need to be in the UK?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>When does it start?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>How much time will this take?</figcaption><div class="ph video" data-video="697c3b068a424320b13754957d29f84a"></div></figure>
+      <figure><figcaption>What if I can't make the live calls?</figcaption><div class="ph video" data-video="f692c8b5d5f34f84b46fbb4b61b45b12"></div></figure>
+      <figure><figcaption>Do I need to be in the UK?</figcaption><div class="ph video" data-video="872b3b607fa9421596819dcaa311bd2f"></div></figure>
+      <figure><figcaption>When does it start?</figcaption><div class="ph video" data-video="9938e81434be40669b3b62d7cd40e77f"></div></figure>
     </div></div>
     <div class="fl-group"><p class="t25">Results</p><div class="fl-grid">
-      <figure><figcaption>How quickly will I see results?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>I've tried coaching before and it didn't work.</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>I'm not in a crisis. Is this for me?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What if I fall off during the program?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>How quickly will I see results?</figcaption><div class="ph video" data-video="42138270abf24744a41300a39221e452"></div></figure>
+      <figure><figcaption>I've tried coaching before and it didn't work.</figcaption><div class="ph video" data-video="ae8ee61ce42647ab9a9cbc215785cac6"></div></figure>
+      <figure><figcaption>I'm not in a crisis. Is this for me?</figcaption><div class="ph video" data-video="6585a6566ce74913a6d8e2d98e7007b9"></div></figure>
+      <figure><figcaption>What if I fall off during the program?</figcaption><div class="ph video" data-video="fb43d616ed684158a0e3a2a4c9c025f7"></div></figure>
     </div></div>
     <div class="fl-group"><p class="t25">Money</p><div class="fl-grid">
-      <figure><figcaption>Is there a payment plan?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What's the pay-in-full bonus?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>What's your refund policy?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>Can I pay a different way?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Is there a payment plan?</figcaption><div class="ph video" data-video="0c60738d2f18435aaaa15818cb84a2b8"></div></figure>
+      <figure><figcaption>What's the pay-in-full bonus?</figcaption><div class="ph video" data-video="88f05632a3be4ba79adb7d434029ab64"></div></figure>
+      <figure><figcaption>What's your refund policy?</figcaption><div class="ph video" data-video="76673e36fbd94aa3beb403dfc0e93775"></div></figure>
+      <figure><figcaption>Can I pay a different way?</figcaption><div class="ph video" data-video="91ca08aadeb44c88a1a0155bdc6a2990"></div></figure>
     </div></div>
     <div class="fl-group"><p class="t25">About me</p><div class="fl-grid">
-      <figure><figcaption>Are you a therapist? What makes you qualified?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>Is this therapy?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>Can I talk to a man you've worked with?</figcaption><div class="ph video"></div></figure>
-      <figure><figcaption>Why did you start Chosen Man?</figcaption><div class="ph video"></div></figure>
+      <figure><figcaption>Are you a therapist? What makes you qualified?</figcaption><div class="ph video" data-video="d00b07bcd5c948cea8cd73152cfcc44e"></div></figure>
+      <figure><figcaption>Is this therapy?</figcaption><div class="ph video" data-video="d00b07bcd5c948cea8cd73152cfcc44e"></div></figure>
+      <figure><figcaption>Can I talk to a man you've worked with?</figcaption><div class="ph video" data-video="a26713db28474e1a9b24795d4e1bfe5a"></div></figure>
+      <figure><figcaption>Why did you start Chosen Man?</figcaption><div class="ph video" data-video="aadda22891ad4660aa2c1a6c669ddd1d"></div></figure>
     </div></div>
     <a class="btn-join if-open" href="#join" style="margin-top:20px">Join Today</a>
     <a class="btn-join if-waitlist if-closed" href="#waitlist" style="margin-top:20px">Join the Waitlist</a>
@@ -1089,6 +1096,8 @@ const CONFIG = {
     checkoutPif: "#checkout-pif", checkoutPlan: "#checkout-plan",
     instagramUrl: "#", skool: "#", booking: "#", community: "#", call: "https://calendly.com/markdarwinskool/free-call", terms: "#", privacy: "#"
   },
+  // Loom videos: id -> cover image. Each plays on the page when pressed (loads only on click, so the page stays fast).
+  videoThumbs: {"a26713db28474e1a9b24795d4e1bfe5a": "https://cdn.loom.com/sessions/thumbnails/a26713db28474e1a9b24795d4e1bfe5a-ccf76189ffb8d968.gif",  "d227b6fbb17848a5bfc3e68081879954": "https://cdn.loom.com/sessions/thumbnails/d227b6fbb17848a5bfc3e68081879954-29b31c18d64e39e9.gif", "42138270abf24744a41300a39221e452": "https://cdn.loom.com/sessions/thumbnails/42138270abf24744a41300a39221e452-8dc33d33880bb315.gif", "b13d6691ff1a4bdf8124289132432842": "https://cdn.loom.com/sessions/thumbnails/b13d6691ff1a4bdf8124289132432842-e13c2e0d0af6a41c.gif", "2a314212141c43808a20eeeefd871666": "https://cdn.loom.com/sessions/thumbnails/2a314212141c43808a20eeeefd871666-f3228762c670ca5c.gif", "697c3b068a424320b13754957d29f84a": "https://cdn.loom.com/sessions/thumbnails/697c3b068a424320b13754957d29f84a-0980d915aaf816cc.gif", "ae8ee61ce42647ab9a9cbc215785cac6": "https://cdn.loom.com/sessions/thumbnails/ae8ee61ce42647ab9a9cbc215785cac6-b9fb53875e04f75c.gif", "963e30a4aae042858598704bfbd5a922": "https://cdn.loom.com/sessions/thumbnails/963e30a4aae042858598704bfbd5a922-8356420c5e7ad3c4.gif", "3504c8c4590045ee83742cec78fd0723": "https://cdn.loom.com/sessions/thumbnails/3504c8c4590045ee83742cec78fd0723-70342827cf3a440a.gif", "9938e81434be40669b3b62d7cd40e77f": "https://cdn.loom.com/sessions/thumbnails/9938e81434be40669b3b62d7cd40e77f-f5eded1b23cca908.gif", "f692c8b5d5f34f84b46fbb4b61b45b12": "https://cdn.loom.com/sessions/thumbnails/f692c8b5d5f34f84b46fbb4b61b45b12-9d454ebfd1ac7755.gif", "872b3b607fa9421596819dcaa311bd2f": "https://cdn.loom.com/sessions/thumbnails/872b3b607fa9421596819dcaa311bd2f-04618d6d22c41caa.gif", "6585a6566ce74913a6d8e2d98e7007b9": "https://cdn.loom.com/sessions/thumbnails/6585a6566ce74913a6d8e2d98e7007b9-73d74fbee538f061.gif", "d00b07bcd5c948cea8cd73152cfcc44e": "https://cdn.loom.com/sessions/thumbnails/d00b07bcd5c948cea8cd73152cfcc44e-44f0402d648dd4d9.gif", "76673e36fbd94aa3beb403dfc0e93775": "https://cdn.loom.com/sessions/thumbnails/76673e36fbd94aa3beb403dfc0e93775-d78f327110d76c58.gif", "d63d784576c649568daeaebaae31f68b": "https://cdn.loom.com/sessions/thumbnails/d63d784576c649568daeaebaae31f68b-6545e75f75e87606.gif", "aadda22891ad4660aa2c1a6c669ddd1d": "https://cdn.loom.com/sessions/thumbnails/aadda22891ad4660aa2c1a6c669ddd1d-7755bc167035cfde.gif", "0c60738d2f18435aaaa15818cb84a2b8": "https://cdn.loom.com/sessions/thumbnails/0c60738d2f18435aaaa15818cb84a2b8-69afdde1285680fd.gif", "fb43d616ed684158a0e3a2a4c9c025f7": "https://cdn.loom.com/sessions/thumbnails/fb43d616ed684158a0e3a2a4c9c025f7-4b630b5defd40e74.gif", "88f05632a3be4ba79adb7d434029ab64": "https://cdn.loom.com/assets/img/og/slack-protected-video.gif", "91ca08aadeb44c88a1a0155bdc6a2990": "https://cdn.loom.com/sessions/thumbnails/91ca08aadeb44c88a1a0155bdc6a2990-2028cb5a9f8a750c.gif" },
   closedRedirect: null,  // e.g. "#waitlist" to send sales-page visitors there once the cart closes
   // Sign-ups are saved to this Supabase table (see supabase-funnel-leads.sql). The anon key is public by design;
   // the table only allows inserts, so nobody can read your leads from the website.
@@ -1278,6 +1287,21 @@ const MAILS = [];
     if (!ok) return;
     saveLead("waitlist", { first: val("wl-first"), email: val("wl-email"), phone: val("wl-phone") });
     $("wl-fields").hidden = true; $("wl-done").hidden = false;
+  });
+
+  // ---------- Loom videos: cover image + play button; the player loads only when pressed ----------
+  function playVideo(el) {
+    if (el.classList.contains("playing")) return;
+    el.classList.add("playing");
+    el.innerHTML = `<iframe src="https://www.loom.com/embed/${el.dataset.video}?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video answer"></iframe>`;
+  }
+  document.querySelectorAll(".ph.video[data-video]").forEach(el => {
+    const thumb = (CONFIG.videoThumbs || {})[el.dataset.video];
+    el.classList.add("has-video"); el.innerHTML = "";
+    if (thumb) el.style.backgroundImage = `url("${thumb}")`;
+    el.setAttribute("role", "button"); el.tabIndex = 0; el.setAttribute("aria-label", "Play video");
+    el.addEventListener("click", () => playVideo(el));
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playVideo(el); } });
   });
 
   // ---------- emails ----------
