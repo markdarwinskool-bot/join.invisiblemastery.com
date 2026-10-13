@@ -197,7 +197,7 @@ ul.list { margin: 0; padding-left: 40px; display: flex; flex-direction: column; 
 footer { background: var(--white); padding: 10px 16px 90px; text-align: center; font: 300 14px/20px var(--f-body); color: var(--soft); }
 
 /* ---------- OPT-IN (reference: full-bleed photo, 747px card, 50px padding, Roboto) ---------- */
-.optin { min-height: 100vh; padding: 42px 16px 90px; display: flex; justify-content: center; align-items: flex-start; background: linear-gradient(rgba(21,20,19,.55), rgba(21,20,19,.55)), #2B2925; position: relative; }
+.optin { min-height: 100vh; padding: 42px 16px 90px; display: flex; justify-content: center; align-items: flex-start; background: linear-gradient(rgba(21,20,19,.35), rgba(21,20,19,.35)), url("images/optin-bg.jpg") center / cover no-repeat, #2B2925; position: relative; }
 .optin .bg-note { position: absolute; right: 16px; bottom: 70px; color: rgba(255,255,255,.7); font: 600 13px/1.3 var(--f-body); }
 .card { width: 747px; max-width: 100%; background: var(--optin-card); padding: 50px; display: flex; flex-direction: column; font-family: var(--f-btn); }
 
@@ -322,6 +322,36 @@ html { scroll-snap-type: y mandatory; scroll-padding-top: 70px; }
 #sales > section, #sales > .timer-blk, #sales > footer { scroll-snap-align: start; }
 #sales > .timer-blk:not([hidden]) + .hero { scroll-snap-align: none; }   /* timer + headline snap together as one screen */
 
+/* ---------- closed / opening-soon bar ---------- */
+.soldbar { background: var(--dark); padding: 20px 16px; display: flex; justify-content: center; }
+.soldpill { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 590px; max-width: 100%; height: 44px; border-radius: 100px; background: #fff; color: var(--text); text-decoration: none; font: 500 14px/1 var(--f-btn); box-shadow: 0 2px 6px rgba(0,0,0,.25); transition: filter .15s; }
+.soldpill:hover { filter: brightness(.95); }
+#sales > .soldbar { scroll-snap-align: start; }
+#sales > .soldbar:not([hidden]) ~ .hero { scroll-snap-align: none; }
+
+/* ---------- waitlist pop-up (reference: the waitlist form opens in a pop-up) ---------- */
+.wl-modal { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.5); display: flex; align-items: flex-start; justify-content: center; padding: 6vh 16px 24px; overflow-y: auto; }
+.wl-box { position: relative; width: 480px; max-width: 100%; background: #fff; border-radius: 6px; padding: 34px 34px 28px; box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+.wl-x { position: absolute; top: -12px; right: -12px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: #fff; color: #000; font: 700 20px/1 var(--f-btn); cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+.wl-box form { display: flex; flex-direction: column; gap: 10px; }
+.wl-box label { font: 400 17px/1.3 var(--f-body); color: var(--text); margin-top: 6px; }
+.wl-box input { height: 46px; border: 1px solid #D6D2CB; border-radius: 4px; background: #ECE9E4; padding: 0 12px; font: 400 17px/1 var(--f-body); color: var(--text); width: 100%; }
+.wl-box input:focus { outline: none; border-color: var(--text); background: #fff; }
+.wl-box .go { margin-top: 14px; height: 52px; border: 0; border-radius: 4px; background: var(--cta); color: #fff; font: 700 22px/1 var(--f-btn); cursor: pointer; }
+.wl-box .go:hover { filter: brightness(1.1); }
+.wl-box .err { color: var(--cta); font: 400 15px/1.4 var(--f-btn); }
+.wl-box .consent { margin: 4px 0 0; font: 400 13px/18px var(--f-btn); color: var(--soft); text-align: center; }
+.wl-box .done { text-align: center; display: flex; flex-direction: column; gap: 12px; padding: 10px 0; }
+.wl-box .done b { font: 700 28px/1.2 var(--f-btn); }
+.wl-box .done p { font: 300 18px/26px var(--f-body); }
+.wl-box .done button { align-self: center; margin-top: 6px; height: 46px; padding: 0 26px; border: 0; border-radius: 4px; background: var(--dark); color: #fff; font: 700 16px/1 var(--f-btn); cursor: pointer; }
+@media (max-width: 600px) { .wl-box { padding: 28px 20px 22px; } .wl-x { right: -6px; top: -14px; } }
+
+/* ---------- live call page ---------- */
+.live h1 { margin: 0; font: 700 42px/1.1 var(--f-head); text-align: center; text-wrap: balance; }
+.live .sub { font: 300 24px/27px var(--f-work); text-align: center; text-wrap: balance; }
+.live .when { font: 700 20px/26px var(--f-body); text-align: center; }
+
 /* ---------- draft-only preview switcher ---------- */
 .preview { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px)); background: #111; color: #bbb; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; justify-content: center; font: 600 12px/1 var(--f-body); }
 html.live .preview { display: none; }
@@ -375,7 +405,6 @@ html.live .preview { display: none; }
 
 <!-- =========================== PAGE 1: OPT-IN =========================== -->
 <main id="optin" class="view optin">
-  <span class="bg-note">[Full-screen background photo]</span>
   <form class="card" id="optin-form" autocomplete="on" novalidate>
     <h1>"Man to Man" LIVE <span data-cfg="eventNumber">#1</span> (REPLAY)</h1>
     <p class="lead">Honestly, this call was SO powerful. 🔥 If you missed it live you HAVE to watch the replay.</p>
@@ -409,6 +438,11 @@ html.live .preview { display: none; }
     <a href="#waitlist" class="if-waitlist if-closed" tabindex="-1">Join the Waitlist</a>
   </div>
 
+  <!-- 0 · closed / opening-soon bar (reference: "Sold Out (Join Waitlist Here)") -->
+  <div class="soldbar if-closed if-waitlist">
+    <a class="soldpill" href="#waitlist"><span class="if-closed">Sold Out (Join Waitlist Here)</span><span class="if-waitlist">Opening Soon (Join Waitlist Here)</span> <span aria-hidden="true">→</span></a>
+  </div>
+
   <!-- 0 · inline timer -->
   <div class="timer-blk if-open if-waitlist">
     <p class="lbl"><span class="if-open">Enrollment Ends in:</span><span class="if-waitlist">Enrollment Opens in:</span></p>
@@ -431,8 +465,8 @@ html.live .preview { display: none; }
       <div class="cta-notes">
         <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
         <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span> to the Waitlist.</span>
-        <span class="if-closed">Enrollment is closed. Join the waitlist for the next intake.</span>
-        <span>Limited spots available</span>
+        <span class="if-closed">We are Sold Out for this round. Get on the waitlist.</span>
+        <span class="if-open if-waitlist">Limited spots available</span>
       </div>
     </div>
   </section>
@@ -441,7 +475,7 @@ html.live .preview { display: none; }
   <section class="vid">
     <div class="col">
       <p class="playline"><span class="hl-pink">Click play on video below 👇</span></p>
-      <div class="ph video"><span>[Replay] "Man to Man" LIVE #1</span></div>
+      <div class="ph video" data-slot="replay"><span>[Replay] "Man to Man" LIVE, full call</span></div>
       <p class="cap">This video is the REPLAY from the last <b>"Man to Man"</b> call - an intimate virtual gathering to meet men I've worked with. Hear their stories and what changed for them. <b>Press play to hear my own story (at [1h__m]) and how I found this work.</b> (To watch the Q&amp;A from this call. <a href="#replay">Go Here</a>)</p>
     </div>
   </section>
@@ -588,7 +622,7 @@ html.live .preview { display: none; }
       <div class="cta-notes">
         <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
         <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
-        <span>Limited spots available</span>
+        <span class="if-open if-waitlist">Limited spots available</span>
       </div>
     </div>
   </section>
@@ -616,6 +650,7 @@ html.live .preview { display: none; }
       <p><b>Payment Plan Options</b><br><span data-cfg="planPrice">£859</span> per month for <span data-cfg="planCount">3</span> months</p>
       <p>If you need a different payment plan or payment method, send me a message on instagram.</p>
       <a class="btn-join if-open" href="#join">Join Now</a>
+      <a class="btn-join if-waitlist if-closed" href="#waitlist">Join Now</a>
     </div>
   </section>
 
@@ -655,7 +690,7 @@ html.live .preview { display: none; }
       <div class="cta-notes">
         <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
         <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
-        <span class="if-closed">This intake is closed.</span>
+        <span class="if-closed">Enrollment is now closed. Get on the waitlist to<br>be notified when spots open.</span>
         <span>If you need a different payment plan or payment method, <a href="#" data-link="instagramUrl" style="color:var(--link)">message me</a> on instagram.</span>
       </div>
       <p><span class="hl-pink"><b>﹡Pay in full BONUS</b></span> - Bonus for paying in full is lifetime access to the Private Chosen Man Community with all classes unlocked, plus Private 1-1 Calls every 2 weeks for the full 6 months. This is valued at <span data-cfg="pifBonusValue">£2,100</span>.</p>
@@ -799,7 +834,7 @@ html.live .preview { display: none; }
           </div>
         </details>
       </div>
-      <p class="more-q"><a href="#faq">Have more questions? Watch all [N]+ video answers here →</a></p>
+      <p class="more-q"><a href="#faq">Have more questions? Watch all 22 video answers here →</a></p>
       <p class="ask-call if-open">Have a question before you join? <a href="#" data-link="call" data-utm="qa" target="_blank" rel="noopener">Book a call with me →</a></p>
     </div>
   </section>
@@ -813,7 +848,7 @@ html.live .preview { display: none; }
       <div class="cta-notes">
         <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
         <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
-        <span>Limited spots available</span>
+        <span class="if-open if-waitlist">Limited spots available</span>
       </div>
     </div>
   </section>
@@ -854,7 +889,7 @@ html.live .preview { display: none; }
       <div class="cta-notes">
         <span class="if-open">Enrollment closes on <span data-cfg="closeDate">[DATE]</span> at <span data-cfg="closeTime">[TIME]</span></span>
         <span class="if-waitlist">Enrollment opens on <span data-cfg="openDate">[DATE]</span></span>
-        <span>Limited spots available</span>
+        <span class="if-open if-waitlist">Limited spots available</span>
       </div>
     </div>
   </section>
@@ -865,8 +900,8 @@ html.live .preview { display: none; }
 <!-- =========================== PAGE 3: REPLAY WATCH PAGE =========================== -->
 <main id="replay" class="view view-page rp" hidden>
   <div class="col">
-    <p class="lbl">Replay available for...</p>
-    <div class="units muted" style="margin-top:-14px">
+    <p class="lbl if-open">Replay available for...</p>
+    <div class="units muted if-open" style="margin-top:-14px">
       <div><b data-rcd="d">0</b><span>Days</span></div>
       <div><b data-rcd="h">00</b><span>Hours</span></div>
       <div><b data-rcd="m">00</b><span>Minutes</span></div>
@@ -875,7 +910,7 @@ html.live .preview { display: none; }
     <p class="rp-title" style="margin-top:44px">"Man to Man"</p>
     <p class="rp-date">([Date of call])</p>
     <p class="rp-sub">Meet men who broke their loops, dropped the mask and started keeping their word.</p>
-    <div class="ph video"><span>[Replay] "Man to Man" LIVE #1, full call</span></div>
+    <div class="ph video" data-slot="replay"><span>[Replay] "Man to Man" LIVE, full call</span></div>
     <div class="rp-desc">
       <p>Replay from our <b>"Man to Man"</b> call, <i>a raw virtual gathering to meet men I've worked with. They tell you where they were, the loops they kept running, and what actually changed.</i></p>
       <p><b>You'll leave knowing exactly why your resets keep collapsing, and what it looks like when they stop.</b></p>
@@ -1013,6 +1048,31 @@ html.live .preview { display: none; }
   </div>
 </main>
 
+<!-- =========================== LIVE CALL PAGE (used on launch day: watch live + pay during the call) =========================== -->
+<main id="live" class="view view-page live" hidden>
+  <div class="col">
+    <p class="lbl" style="text-align:center;font:300 16px/22px var(--f-body)" data-live-before>The live call starts in:</p>
+    <div class="units" data-live-before>
+      <div><b data-lcd="d">0</b><span>Days</span></div>
+      <div><b data-lcd="h">00</b><span>Hours</span></div>
+      <div><b data-lcd="m">00</b><span>Minutes</span></div>
+      <div><b data-lcd="s">00</b><span>Seconds</span></div>
+    </div>
+    <h1>"Man to Man" LIVE</h1>
+    <p class="when" data-live-when>The next live call will be announced to the waitlist first.</p>
+    <p class="sub">Join me live. I'll walk you through why you keep falling back into the same habits, what actually changes it, and answer your questions on the call.</p>
+    <a class="btn-join" href="#" data-link="liveCall" target="_blank" rel="noopener" data-live-join>Join the Live Call</a>
+    <div class="col if-open" style="gap:16px;width:100%;margin-top:30px">
+      <div class="join-top"><span class="pre">Join</span><span class="name">Chosen Man</span></div>
+      <a class="pill" href="#" data-link="checkoutPif"><b>Pay in Full *</b><span>One time payment <span data-cfg="pifPrice">£2,500</span></span></a>
+      <p class="or">OR:</p>
+      <a class="pill wide" href="#" data-link="checkoutPlan"><b>Payment Plan</b><span><span data-cfg="planCount">3</span> Monthly Payments of <span data-cfg="planPrice">£859</span></span></a>
+      <p class="ask-call">Have a question before you join? <a href="#" data-link="call" data-utm="live" target="_blank" rel="noopener">Book a call with me →</a></p>
+    </div>
+    <a class="btn-join if-waitlist if-closed" href="#waitlist" style="margin-top:20px">Join the Waitlist</a>
+  </div>
+</main>
+
 <!-- =========================== PAGE 7: FAQ VIDEO LIBRARY =========================== -->
 <main id="faq" class="view view-page faqlib" hidden>
   <div class="col">
@@ -1055,6 +1115,33 @@ html.live .preview { display: none; }
   </div>
 </main>
 
+<!-- =========================== WAITLIST POP-UP (every "Join the Waitlist" button opens this) =========================== -->
+<div class="wl-modal" id="wl-modal" hidden role="dialog" aria-modal="true" aria-label="Join the Chosen Man waitlist">
+  <div class="wl-box">
+    <button type="button" class="wl-x" id="wlm-x" aria-label="Close">×</button>
+    <form id="wlm-form" autocomplete="on" novalidate>
+      <label for="wlm-first">First Name</label>
+      <input id="wlm-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+      <label for="wlm-last">Last Name</label>
+      <input id="wlm-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="next">
+      <label for="wlm-email">Email</label>
+      <input id="wlm-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+      <label for="wlm-email2"><b>Confirm Email</b></label>
+      <input id="wlm-email2" name="email_confirm" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
+      <label for="wlm-phone"><b>Phone (for Text Notification - Optional)</b></label>
+      <input id="wlm-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" enterkeyhint="done">
+      <p class="err" id="wlm-err" hidden></p>
+      <button type="submit" class="go">Join 'Chosen Man' Waitlist</button>
+      <p class="consent">By joining, you agree to get texts and emails about the Chosen Man Initiation. Reply STOP or unsubscribe any time.</p>
+    </form>
+    <div class="done" id="wlm-done" hidden>
+      <b>You're on the list.</b>
+      <p>We'll text and email you the moment the doors open, before anyone else.</p>
+      <button type="button" id="wlm-back">Back to the page</button>
+    </div>
+  </div>
+</div>
+
 <!-- draft-only switcher: delete before launch -->
 <div class="preview" id="draftbar" role="toolbar" aria-label="Draft preview">
   <label for="pv-page">DRAFT page:</label>
@@ -1066,6 +1153,7 @@ html.live .preview { display: none; }
     <option value="checkout-plan">4b · Checkout: payment plan</option>
     <option value="thanks">5 · Thank you / onboarding</option>
     <option value="waitlist">6 · Waitlist</option>
+    <option value="live">6b · Live call page</option>
     <option value="faq">7 · FAQ video library</option>
   </select>
   <span>Cart:</span>
@@ -1084,8 +1172,13 @@ html.live .preview { display: none; }
 ================================================================= */
 const CONFIG = {
   eventNumber: "#1",
-  openAt: "2026-10-29T09:00:00+00:00",   // doors open on the morning of the live call (UK time, GMT after 25 Oct)
-  closeAt: "2026-11-07T22:00:00+00:00",  // hard close, 9 days later (UK time)
+  // Between launches leave openAt/closeAt null: the site shows "Sold Out (Join Waitlist Here)".
+  // For a launch, set both (UK time), e.g. "2026-10-29T09:00:00+00:00" and "2026-11-07T22:00:00+00:00".
+  // Before openAt the site shows "Opening Soon (Join Waitlist Here)" with a countdown.
+  openAt: null,
+  closeAt: null,
+  liveAt: null,        // start of the next live call, e.g. "2026-10-29T19:00:00+00:00" (shown on /live)
+  replay: "",          // the 45-minute replay: a Loom share link or a YouTube link
   pifPrice: "£2,500",
   pifBonusValue: "£2,100",
   planCount: "3",
@@ -1094,7 +1187,7 @@ const CONFIG = {
   links: {
     sales: "#sales", waitlist: "#waitlist", qaReplay: "#replay", faqVideos: "#faq",
     checkoutPif: "#checkout-pif", checkoutPlan: "#checkout-plan",
-    instagramUrl: "#", skool: "#", booking: "#", community: "#", call: "https://calendly.com/markdarwinskool/free-call", terms: "#", privacy: "#"
+    instagramUrl: "#", skool: "#", booking: "#", community: "#", liveCall: "#", call: "https://calendly.com/markdarwinskool/free-call", terms: "#", privacy: "#"
   },
   // Loom videos: id -> cover image. Each plays on the page when pressed (loads only on click, so the page stays fast).
   videoThumbs: {"a26713db28474e1a9b24795d4e1bfe5a": "https://cdn.loom.com/sessions/thumbnails/a26713db28474e1a9b24795d4e1bfe5a-ccf76189ffb8d968.gif",  "d227b6fbb17848a5bfc3e68081879954": "https://cdn.loom.com/sessions/thumbnails/d227b6fbb17848a5bfc3e68081879954-29b31c18d64e39e9.gif", "42138270abf24744a41300a39221e452": "https://cdn.loom.com/sessions/thumbnails/42138270abf24744a41300a39221e452-8dc33d33880bb315.gif", "b13d6691ff1a4bdf8124289132432842": "https://cdn.loom.com/sessions/thumbnails/b13d6691ff1a4bdf8124289132432842-e13c2e0d0af6a41c.gif", "2a314212141c43808a20eeeefd871666": "https://cdn.loom.com/sessions/thumbnails/2a314212141c43808a20eeeefd871666-f3228762c670ca5c.gif", "697c3b068a424320b13754957d29f84a": "https://cdn.loom.com/sessions/thumbnails/697c3b068a424320b13754957d29f84a-0980d915aaf816cc.gif", "ae8ee61ce42647ab9a9cbc215785cac6": "https://cdn.loom.com/sessions/thumbnails/ae8ee61ce42647ab9a9cbc215785cac6-b9fb53875e04f75c.gif", "963e30a4aae042858598704bfbd5a922": "https://cdn.loom.com/sessions/thumbnails/963e30a4aae042858598704bfbd5a922-8356420c5e7ad3c4.gif", "3504c8c4590045ee83742cec78fd0723": "https://cdn.loom.com/sessions/thumbnails/3504c8c4590045ee83742cec78fd0723-70342827cf3a440a.gif", "9938e81434be40669b3b62d7cd40e77f": "https://cdn.loom.com/sessions/thumbnails/9938e81434be40669b3b62d7cd40e77f-f5eded1b23cca908.gif", "f692c8b5d5f34f84b46fbb4b61b45b12": "https://cdn.loom.com/sessions/thumbnails/f692c8b5d5f34f84b46fbb4b61b45b12-9d454ebfd1ac7755.gif", "872b3b607fa9421596819dcaa311bd2f": "https://cdn.loom.com/sessions/thumbnails/872b3b607fa9421596819dcaa311bd2f-04618d6d22c41caa.gif", "6585a6566ce74913a6d8e2d98e7007b9": "https://cdn.loom.com/sessions/thumbnails/6585a6566ce74913a6d8e2d98e7007b9-73d74fbee538f061.gif", "d00b07bcd5c948cea8cd73152cfcc44e": "https://cdn.loom.com/sessions/thumbnails/d00b07bcd5c948cea8cd73152cfcc44e-44f0402d648dd4d9.gif", "76673e36fbd94aa3beb403dfc0e93775": "https://cdn.loom.com/sessions/thumbnails/76673e36fbd94aa3beb403dfc0e93775-d78f327110d76c58.gif", "d63d784576c649568daeaebaae31f68b": "https://cdn.loom.com/sessions/thumbnails/d63d784576c649568daeaebaae31f68b-6545e75f75e87606.gif", "aadda22891ad4660aa2c1a6c669ddd1d": "https://cdn.loom.com/sessions/thumbnails/aadda22891ad4660aa2c1a6c669ddd1d-7755bc167035cfde.gif", "0c60738d2f18435aaaa15818cb84a2b8": "https://cdn.loom.com/sessions/thumbnails/0c60738d2f18435aaaa15818cb84a2b8-69afdde1285680fd.gif", "fb43d616ed684158a0e3a2a4c9c025f7": "https://cdn.loom.com/sessions/thumbnails/fb43d616ed684158a0e3a2a4c9c025f7-4b630b5defd40e74.gif", "88f05632a3be4ba79adb7d434029ab64": "https://cdn.loom.com/assets/img/og/slack-protected-video.gif", "91ca08aadeb44c88a1a0155bdc6a2990": "https://cdn.loom.com/sessions/thumbnails/91ca08aadeb44c88a1a0155bdc6a2990-2028cb5a9f8a750c.gif" },
@@ -1111,8 +1204,12 @@ const MAILS = [];
 
 (function () {
   const DAY = 864e5, now0 = Date.now();
-  const openAt = CONFIG.openAt ? new Date(CONFIG.openAt).getTime() : now0 - DAY;
-  const closeAt = CONFIG.closeAt ? new Date(CONFIG.closeAt).getTime() : now0 + 9 * DAY + 3.5 * 36e5;
+  // Real launch dates (null between launches = closed). Preview dates are only used by the ?draft buttons.
+  const realOpen = CONFIG.openAt ? new Date(CONFIG.openAt).getTime() : null;
+  const realClose = CONFIG.closeAt ? new Date(CONFIG.closeAt).getTime() : null;
+  const openAt = realOpen ?? now0 + 2 * DAY;
+  const closeAt = realClose ?? openAt + 9 * DAY + 13 * 36e5;
+  const liveAt = CONFIG.liveAt ? new Date(CONFIG.liveAt).getTime() : null;
   let override = null, offset = 0, plan = "pif";
 
   const fmtDate = t => new Date(t).toLocaleDateString("en-GB", { weekday: "long", month: "long", day: "numeric" });
@@ -1130,10 +1227,10 @@ const MAILS = [];
 
   function tick() {
     const now = Date.now() + offset;
-    const s = now < openAt ? "waitlist" : now < closeAt ? "open" : "closed";
+    const s = (override === null && (realOpen === null || realClose === null)) ? "closed" : now < openAt ? "waitlist" : now < closeAt ? "open" : "closed";
     const target = s === "waitlist" ? openAt : s === "open" ? closeAt : null;
     if (s === "closed" && CONFIG.closedRedirect && override === null && !sales.hidden) { location.href = CONFIG.closedRedirect; return; }
-    if (s === "open" && override === null && !$("waitlist").hidden) { go("sales"); }   // doors open: the waitlist page sends visitors to the sales page
+
     document.querySelectorAll(".if-waitlist, .if-open, .if-closed").forEach(el => { el.hidden = !el.classList.contains("if-" + s); });
     if (target) {
       const t = split(target - now);
@@ -1191,7 +1288,7 @@ const MAILS = [];
   else addEventListener("scroll", () => { clearTimeout(settleTimer); settleTimer = setTimeout(onSettle, 120); }, { passive: true });
 
   // ---------- page router (hash = page) ----------
-  const VIEWS = { optin: "optin", sales: "sales", replay: "replay", "checkout-pif": "checkout", "checkout-plan": "checkout", thanks: "thanks", "thanks-plan": "thanks", waitlist: "waitlist", faq: "faq" };
+  const VIEWS = { optin: "optin", sales: "sales", replay: "replay", "checkout-pif": "checkout", "checkout-plan": "checkout", thanks: "thanks", "thanks-plan": "thanks", waitlist: "sales", live: "live", faq: "faq" };
   function show(name) {
     const target = VIEWS[name];
     document.querySelectorAll("main.view").forEach(m => { m.hidden = m.id !== target; });
@@ -1221,6 +1318,7 @@ const MAILS = [];
     if (!a) return;
     const name = a.getAttribute("href").slice(1);
     if (!name) { e.preventDefault(); return; }   // placeholder links (#) do nothing until you add real URLs
+    if (name === "waitlist") { e.preventDefault(); openWaitlist(); return; }   // every "Join the Waitlist" opens the pop-up
     if (go(name, !sales.hidden)) e.preventDefault();
   });
   $("pv-page").addEventListener("change", e => { go(e.target.value); });
@@ -1289,20 +1387,65 @@ const MAILS = [];
     $("wl-fields").hidden = true; $("wl-done").hidden = false;
   });
 
-  // ---------- Loom videos: cover image + play button; the player loads only when pressed ----------
+  // ---------- videos: cover image + play button; the player loads only when pressed (Loom or YouTube) ----------
+  const ytId = u => (u.match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/) || [])[1];
+  const loomId = u => (u.match(/loom\.com\/(?:share|embed)\/([0-9a-f]{32})/) || [])[1];
+  if (CONFIG.replay) document.querySelectorAll('.ph.video[data-slot="replay"]').forEach(el => {
+    const y = ytId(CONFIG.replay), l = loomId(CONFIG.replay);
+    if (y) el.dataset.yt = y; else if (l) el.dataset.video = l;
+  });
   function playVideo(el) {
     if (el.classList.contains("playing")) return;
     el.classList.add("playing");
-    el.innerHTML = `<iframe src="https://www.loom.com/embed/${el.dataset.video}?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video answer"></iframe>`;
+    const src = el.dataset.yt ? `https://www.youtube-nocookie.com/embed/${el.dataset.yt}?autoplay=1&rel=0&modestbranding=1`
+                              : `https://www.loom.com/embed/${el.dataset.video}?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true`;
+    el.innerHTML = `<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>`;
   }
-  document.querySelectorAll(".ph.video[data-video]").forEach(el => {
-    const thumb = (CONFIG.videoThumbs || {})[el.dataset.video];
+  document.querySelectorAll(".ph.video[data-video], .ph.video[data-yt]").forEach(el => {
+    const thumb = el.dataset.yt ? `https://i.ytimg.com/vi/${el.dataset.yt}/hqdefault.jpg` : (CONFIG.videoThumbs || {})[el.dataset.video];
     el.classList.add("has-video"); el.innerHTML = "";
     if (thumb) el.style.backgroundImage = `url("${thumb}")`;
     el.setAttribute("role", "button"); el.tabIndex = 0; el.setAttribute("aria-label", "Play video");
     el.addEventListener("click", () => playVideo(el));
     el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playVideo(el); } });
   });
+
+  // ---------- waitlist pop-up ----------
+  const wlm = $("wl-modal");
+  let wlReturn = null;
+  function openWaitlist() {
+    wlReturn = document.activeElement;
+    $("wlm-form").hidden = false; $("wlm-done").hidden = true; $("wlm-err").hidden = true;
+    wlm.hidden = false; document.body.style.overflow = "hidden";
+    setTimeout(() => $("wlm-first").focus(), 30);
+  }
+  function closeWaitlist() {
+    wlm.hidden = true; document.body.style.overflow = "";
+    if (wlReturn && wlReturn.focus) wlReturn.focus();
+  }
+  $("wlm-x").addEventListener("click", closeWaitlist);
+  $("wlm-back").addEventListener("click", closeWaitlist);
+  wlm.addEventListener("click", e => { if (e.target === wlm) closeWaitlist(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && !wlm.hidden) closeWaitlist(); });
+  $("wlm-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const first = val("wlm-first"), email = val("wlm-email"), email2 = val("wlm-email2");
+    const msg = !first ? "Add your first name." : !validEmail(email) ? "Add a valid email." : email.toLowerCase() !== email2.toLowerCase() ? "The two emails don't match." : "";
+    $("wlm-err").textContent = msg; $("wlm-err").hidden = !msg;
+    if (msg) return;
+    saveLead("waitlist", { first, last: val("wlm-last"), email, phone: val("wlm-phone") });
+    $("wlm-form").hidden = true; $("wlm-done").hidden = false;
+  });
+
+  // ---------- live call page ----------
+  if (liveAt) document.querySelectorAll("[data-live-when]").forEach(el => { el.textContent = fmtDate(liveAt) + " at " + fmtTime(liveAt); });
+  function liveTick() {
+    const left = liveAt ? liveAt - (Date.now() + offset) : -1;
+    document.querySelectorAll("[data-live-before]").forEach(el => { el.hidden = !(left > 0); });
+    if (left > 0) { const t = split(left); document.querySelectorAll("[data-lcd]").forEach(el => { const k = el.dataset.lcd; el.textContent = k === "d" ? String(t.d) : pad(t[k]); }); }
+    document.querySelectorAll("[data-live-join]").forEach(el => { el.hidden = !liveAt || CONFIG.links.liveCall === "#"; });
+  }
+  liveTick(); setInterval(liveTick, 1000);
 
   // ---------- emails ----------
   const list = $("mail-list") || document.createElement("div");
