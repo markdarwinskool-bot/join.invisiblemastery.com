@@ -1204,7 +1204,9 @@ const CONFIG = {
   closeAt: null,
   liveAt: null,        // start of the next live call, e.g. "2026-10-29T19:00:00+00:00" (shown on /live)
   replay: "",          // the 45-minute replay: a Loom share link or a YouTube link
-  afterOptin: "enrolled",   // page shown after "Get the Replay": "enrolled" (confirmation) or "sales" (replay page)
+  afterOptin: "enrolled",
+  // Pages visitors can see. Everything else shows the opt-in instead (add ?draft to preview any page).
+  pagesLive: ["optin", "enrolled"],   // page shown after "Get the Replay": "enrolled" (confirmation) or "sales" (replay page)
   pifPrice: "£2,500",
   pifBonusValue: "£2,100",
   planCount: "3",
@@ -1315,7 +1317,9 @@ const MAILS = [];
 
   // ---------- page router (hash = page) ----------
   const VIEWS = { optin: "optin", sales: "sales", replay: "replay", "checkout-pif": "checkout", "checkout-plan": "checkout", thanks: "thanks", "thanks-plan": "thanks", waitlist: "sales", live: "live", enrolled: "enrolled", faq: "faq" };
+  const isDraft = /[?&]draft\b/.test(location.search);
   function show(name) {
+    if (!isDraft && CONFIG.pagesLive && !CONFIG.pagesLive.includes(VIEWS[name])) name = "optin";   // page not switched on yet
     const target = VIEWS[name];
     document.querySelectorAll("main.view").forEach(m => { m.hidden = m.id !== target; });
     if (target === "checkout") setPlan(name === "checkout-plan" ? "plan" : "pif");
@@ -1336,7 +1340,7 @@ const MAILS = [];
     try { history.replaceState(null, "", "#" + name); } catch (err) {}
     return true;
   }
-  function route() { const h = location.hash.slice(1); if (h === "join") toJoin(false); else if (VIEWS[h]) show(h); }
+  function route() { const h = location.hash.slice(1); if (h === "join" && (isDraft || !CONFIG.pagesLive || CONFIG.pagesLive.includes("sales"))) toJoin(false); else if (h === "join") show("optin"); else if (VIEWS[h]) show(h); }
   addEventListener("hashchange", route);
   // Handle every in-page link here, so no click ever reloads the page or lands on the opt-in by mistake
   document.addEventListener("click", e => {
